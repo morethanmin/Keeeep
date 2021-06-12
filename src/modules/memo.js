@@ -1,6 +1,28 @@
 import { handleActions } from "redux-actions";
-import { Map } from "immutable";
+import * as webAPI from "lib/web-api";
 
-const initialState = Map({});
+// action type
 
-export default handleActions({}, initialState);
+const CREATE_MEMO = "memo/CREATE_MEMO";
+
+// action function
+
+export const createMemo = (payload) => ({ type: CREATE_MEMO, payload });
+
+//initial state
+
+const initialState = {};
+
+//memo reducer
+
+const memoReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case CREATE_MEMO:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+export default memoReducer;

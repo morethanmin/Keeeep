@@ -8,7 +8,7 @@ const RESET_INPUT = "ui/write/RESET_INPUT";
 
 export const focusInput = () => ({ type: FOCUS_INPUT });
 export const blurInput = () => ({ type: BLUR_INPUT });
-export const changeInput = () => ({ type: CHANGE_INPUT });
+export const changeInput = (payload) => ({ type: CHANGE_INPUT, payload });
 export const resetInput = () => ({ type: RESET_INPUT });
 
 const initialState = {
@@ -19,6 +19,41 @@ const initialState = {
   },
 };
 
-const uiReducer = (state, action) => {};
+const uiReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FOCUS_INPUT:
+      return {
+        ...state,
+        write: {
+          ...state.write,
+          focused: true,
+        },
+      };
+    case BLUR_INPUT:
+      return {
+        ...state,
+        write: {
+          ...state.write,
+          focused: false,
+        },
+      };
+    case CHANGE_INPUT:
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        write: {
+          ...state.write,
+          [name]: value,
+        },
+      };
+    case RESET_INPUT:
+      return {
+        ...initialState,
+      };
 
-export default handleActions({}, initialState);
+    default:
+      return state;
+  }
+};
+
+export default uiReducer;

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useRef } from "react";
+import React, { Component, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Textarea from "react-textarea-autosize";
 
@@ -22,10 +22,9 @@ const StyledTextArea = styled(Textarea)`
 `;
 
 const InputSet = ({ onChange, title, body }) => {
-  const titleInputRef = useRef();
+  const titleRef = useRef();
   useEffect(() => {
-    console.log(titleInputRef.current);
-    titleInputRef.current.focus();
+    titleRef.current.focus();
   }, []);
 
   return (
@@ -35,7 +34,7 @@ const InputSet = ({ onChange, title, body }) => {
         onChange={onChange}
         placeholder="제목"
         value={title}
-        ref={titleInputRef}
+        ref={titleRef}
       />
       <StyledTextArea
         minRows={3}
