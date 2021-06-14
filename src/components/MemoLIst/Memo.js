@@ -57,11 +57,15 @@ const Body = styled.div`
 `;
 
 const Memo = ({ memo, onOpen }) => {
-  const { id, title, body } = memo;
+  const { title, body } = memo;
+
+  const handleClick = () => {
+    onOpen(memo);
+  };
 
   return (
     <Sizer>
-      <Square>
+      <Square onClick={handleClick}>
         <Contents>
           {title && <Title>{title}</Title>}
           <Body>{body}</Body>

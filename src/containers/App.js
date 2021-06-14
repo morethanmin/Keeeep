@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import MemoListContainer from "./MemoListContainer";
 import WriteMemo from "./WriteMemo";
 import * as memoActions from "modules/memo";
+import MemoViewerContainer from "./MemoViewerContainer";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function App() {
         <WriteMemo />
         <MemoListContainer />
       </Layout.Main>
+      <MemoViewerContainer />
     </Layout>
   );
 }
