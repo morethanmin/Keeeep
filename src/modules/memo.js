@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 import * as webAPI from "lib/web-api";
-import { createPromiseSaga } from "../lib/asyncUtils";
+import { createPromiseSaga, reducerUtils } from "../lib/asyncUtils";
 import { takeEvery } from "@redux-saga/core/effects";
 
 // action type
@@ -14,6 +14,9 @@ const GET_INITIAL_MEMO_ERROR = "memo/GET_INITIAL_MEMO_ERROR";
 const GET_RECENT_MEMO = "memo/GET_RECENT_MEMO";
 const GET_RECENT_MEMO_SUCCESS = "memo/GET_RECENT_MEMO_SUCCESS";
 const GET_RECENT_MEMO_ERROR = "memo/GET_RECENT_MEMO_ERROR";
+
+const UPDATE_MEMO = "memo/UPDATE_MEMO";
+const DELETE_MEMO = "memo/DELETE_MEMO";
 
 // action function
 
@@ -46,22 +49,25 @@ export function* memoSaga() {
 //initial state
 
 const initialState = {
-  list: [],
+  ...reducerUtils.initial([]),
 };
 
 //memo reducer
 
 const memoReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case GET_INITIAL_MEMO_SUCCESS:
       return {
         ...state,
-        list: action.payload.data,
+        loading: false,
+        data: action.payload.data,
+        error: null,
       };
     case GET_RECENT_MEMO_SUCCESS:
       return {
         ...state,
-        list: action.payload.data.concat(state.list),
+        data: action.payload.data.concat(state.data),
       };
 
     default:

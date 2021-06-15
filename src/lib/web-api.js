@@ -11,3 +11,8 @@ export const getInitialMemo = () =>
 // cursor 기준 최근 작성된 메모를 불러온다.
 export const getRecentMemo = (cursor) =>
   axios.get(`/memo/?id_gte=${cursor + 1}&_sort=id&_order=DESC&`);
+
+export const updateMemo = ({ id, memo: { title, body } }) =>
+  axios.put(`/memo/${id}`, { title, body }); // 메모를 업데이트한다.
+
+export const deleteMemo = (id) => axios.delete(`/memo/${id}`); // 메모를 제거한다.

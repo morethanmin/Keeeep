@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as uiActions from "modules/ui";
 
 export default function MemoListContainer() {
-  const memos = useSelector((state) => state.memo.list);
+  const memos = useSelector((state) => state.memo.data);
   const dispatch = useDispatch();
   return (
     <MemoList

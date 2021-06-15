@@ -8,7 +8,7 @@ import * as memoActions from "modules/memo";
 const WriteMemo = () => {
   const WhiteBoxRef = useRef();
   const write = useSelector((state) => state.ui.write);
-  const memos = useSelector((state) => state.memo.list);
+  const memos = useSelector((state) => state.memo.data);
   const { focused, title, body } = write;
   const dispatch = useDispatch();
   useEffect(() => {

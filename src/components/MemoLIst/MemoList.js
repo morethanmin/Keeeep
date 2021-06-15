@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const MemoList = ({ memos, onOpen }) => {
+  console.log("memos", memos);
   const memoList = memos.map((memo) => (
     <Memo key={memo.id} memo={memo} onOpen={onOpen} />
   ));

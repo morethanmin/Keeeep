@@ -10,7 +10,7 @@ import MemoViewerContainer from "./MemoViewerContainer";
 
 export default function App() {
   const dispatch = useDispatch();
-  const memos = useSelector((state) => state.memo.list);
+  const memos = useSelector((state) => state.memo.data);
   useEffect(() => {
     dispatch(getInitialMemo());
   }, []);
