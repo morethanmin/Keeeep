@@ -16,7 +16,12 @@ const GET_RECENT_MEMO_SUCCESS = "memo/GET_RECENT_MEMO_SUCCESS";
 const GET_RECENT_MEMO_ERROR = "memo/GET_RECENT_MEMO_ERROR";
 
 const UPDATE_MEMO = "memo/UPDATE_MEMO";
+const UPDATE_MEMO_SUCCESS = "memo/UPDATE_MEMO";
+const UPDATE_MEMO_ERROR = "memo/UPDATE_MEMO";
+
 const DELETE_MEMO = "memo/DELETE_MEMO";
+const DELETE_MEMO_SUCCESS = "memo/DELETE_MEMO";
+const DELETE_MEMO_ERROR = "memo/DELETE_MEMO";
 
 // action function
 
@@ -26,6 +31,14 @@ export const getInitialMemo = () => ({
 });
 export const getRecentMemo = (payload) => ({
   type: GET_RECENT_MEMO,
+  payload,
+});
+export const updateMemo = (payload) => ({
+  type: UPDATE_MEMO,
+  payload,
+});
+export const deleteMemo = (payload) => ({
+  type: DELETE_MEMO,
   payload,
 });
 
@@ -39,11 +52,16 @@ const getRecentMemoSaga = createPromiseSaga(
   webAPI.getRecentMemo
 );
 
+const updateMemoSaga = createPromiseSaga(UPDATE_MEMO, webAPI.updateMemo);
+const deleteMemoSaga = createPromiseSaga(DELETE_MEMO, webAPI.deleteMemo);
+
 // 사가들을 합치기
 export function* memoSaga() {
   yield takeEvery(CREATE_MEMO, createMemoSaga);
   yield takeEvery(GET_INITIAL_MEMO, getInitialMemoSaga);
   yield takeEvery(GET_RECENT_MEMO, getRecentMemoSaga);
+  yield takeEvery(UPDATE_MEMO, updateMemoSaga);
+  yield takeEvery(DELETE_MEMO, deleteMemoSaga);
 }
 
 //initial state
@@ -70,6 +88,14 @@ const memoReducer = (state = initialState, action) => {
         data: action.payload.data.concat(state.data),
       };
 
+    case UPDATE_MEMO_SUCCESS:
+      return {
+        ...state,
+      };
+    case DELETE_MEMO_SUCCESS:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
