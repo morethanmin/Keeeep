@@ -16,12 +16,12 @@ const GET_RECENT_MEMO_SUCCESS = "memo/GET_RECENT_MEMO_SUCCESS";
 const GET_RECENT_MEMO_ERROR = "memo/GET_RECENT_MEMO_ERROR";
 
 const UPDATE_MEMO = "memo/UPDATE_MEMO";
-const UPDATE_MEMO_SUCCESS = "memo/UPDATE_MEMO";
-const UPDATE_MEMO_ERROR = "memo/UPDATE_MEMO";
+const UPDATE_MEMO_SUCCESS = "memo/UPDATE_MEMO_SUCCESS";
+const UPDATE_MEMO_ERROR = "memo/UPDATE_MEMO_ERROR";
 
 const DELETE_MEMO = "memo/DELETE_MEMO";
-const DELETE_MEMO_SUCCESS = "memo/DELETE_MEMO";
-const DELETE_MEMO_ERROR = "memo/DELETE_MEMO";
+const DELETE_MEMO_SUCCESS = "memo/DELETE_MEMO_SUCCESS";
+const DELETE_MEMO_ERROR = "memo/DELETE_MEMO_ERROR";
 
 // action function
 
@@ -73,7 +73,6 @@ const initialState = {
 //memo reducer
 
 const memoReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case GET_INITIAL_MEMO_SUCCESS:
       return {
@@ -89,12 +88,26 @@ const memoReducer = (state = initialState, action) => {
       };
 
     case UPDATE_MEMO_SUCCESS:
+      const updatedData = state.data.concat().map((memo) =>
+        memo.id === action.payload.data.id
+          ? {
+              ...memo,
+              title: action.payload.data.title,
+              body: action.payload.data.body,
+            }
+          : memo
+      );
       return {
         ...state,
+        data: updatedData,
       };
     case DELETE_MEMO_SUCCESS:
+      const deletedData = state.data
+        .concat()
+        .filter((memo) => memo.id !== action.prePayload);
       return {
         ...state,
+        data: deletedData,
       };
     default:
       return state;

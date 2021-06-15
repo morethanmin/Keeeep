@@ -7,7 +7,7 @@ export const createPromiseSaga = (type, promiseCreator) => {
     try {
       // 재사용성을 위하여 promiseCreator 의 파라미터엔 action.payload 값을 넣도록 설정합니다.
       const payload = yield call(promiseCreator, action.payload);
-      yield put({ type: SUCCESS, payload });
+      yield put({ type: SUCCESS, payload, prePayload: action.payload });
     } catch (e) {
       yield put({ type: ERROR, error: true, payload: e });
     }

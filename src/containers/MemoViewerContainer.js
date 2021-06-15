@@ -15,18 +15,12 @@ export default function MemoViewerContainer() {
   };
 
   const handleUpdate = () => {
-    dispatch(
-      memoActions.updateMemo({
-        ...memo.info,
-      })
-    );
-    dispatch(memoActions.getInitialMemo());
+    dispatch(memoActions.updateMemo(memo.info));
     dispatch(uiActions.closeViewer());
   };
 
   const handleDelete = () => {
     dispatch(memoActions.deleteMemo(memo.info.id));
-    dispatch(memoActions.getInitialMemo());
     dispatch(uiActions.closeViewer());
   };
 
