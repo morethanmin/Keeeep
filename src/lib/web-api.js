@@ -12,6 +12,9 @@ export const getInitialMemo = () =>
 export const getRecentMemo = (cursor) =>
   axios.get(`/memo/?id_gte=${cursor + 1}&_sort=id&_order=DESC&`);
 
+export const getPreviousMemo = (endCursor) =>
+  axios.get(`/memo/?_sort=id&_order=DESC&_limit=20&id_lte=${endCursor - 1}`); // endCursor 기준 이전 작성된 메모를 불러온다
+
 export const updateMemo = ({ id, title, body }) =>
   axios.put(`/memo/${id}`, { title, body }); // 메모를 업데이트한다.
 

@@ -15,9 +15,9 @@ const Wrapper = styled.div`
   z-index: 5;
 
   /* 색상 */
-  background: ${oc.indigo[6]};
+  background: ${oc.gray[8]};
   color: white;
-  border-bottom: 1px solid ${oc.indigo[7]};
+  border-bottom: 1px solid ${oc.gray[9]};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
 
   /* 폰트 */
@@ -25,5 +25,5 @@ const Wrapper = styled.div`
   font-size: 2.5rem;
 `;
 export default function Header() {
-  return <Wrapper>memo</Wrapper>;
+  return <Wrapper></Wrapper>;
 }
