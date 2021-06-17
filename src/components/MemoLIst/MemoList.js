@@ -1,4 +1,4 @@
-import { media } from "lib/style-utils";
+import { media, transitions } from "lib/style-utils";
 import Memo from "./Memo";
 
 const { default: styled } = require("styled-components");
@@ -10,7 +10,17 @@ const Wrapper = styled.div`
 
   ${media.mobile`
     margin-top: 0.25rem;
-`}
+  `}
+
+  .memo-enter {
+    animation: ${transitions.stretchOut} 0.3s ease-in;
+    animation-fill-mode: forwards;
+  }
+
+  .memo-leave {
+    animation: ${transitions.shrinkIn} 0.15s ease-in;
+    animation-fill-mode: forwards;
+  }
 `;
 
 const MemoList = ({ memos, onOpen }) => {

@@ -84,15 +84,19 @@ export function* memoSaga() {
 
 //initial state
 
-const initialState = {
-  ...reducerUtils.initial([]),
-};
-
+const initialState = reducerUtils.initial([]);
 //memo reducer
 
 const memoReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case GET_INITIAL_MEMO:
+      return {
+        ...state,
+        loading: true,
+        data: state.data,
+        error: null,
+      };
     case GET_INITIAL_MEMO_SUCCESS:
       return {
         ...state,
@@ -103,12 +107,23 @@ const memoReducer = (state = initialState, action) => {
     case GET_RECENT_MEMO_SUCCESS:
       return {
         ...state,
+        loading: false,
         data: action.payload.data.concat(state.data),
+        error: null,
+      };
+    case GET_PREVIOUS_MEMO:
+      return {
+        ...state,
+        loading: true,
+        data: state.data,
+        error: null,
       };
     case GET_PREVIOUS_MEMO_SUCCESS:
       return {
         ...state,
+        loading: false,
         data: state.data.concat(action.payload.data),
+        error: null,
       };
     case UPDATE_MEMO_SUCCESS:
       const updatedData = state.data.concat().map((memo) =>
