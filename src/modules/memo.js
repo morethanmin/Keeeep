@@ -42,7 +42,7 @@ export const getRecentMemo = (payload) => ({
   payload,
 });
 export const getPreviousMemo = (payload) => ({
-  type: GET_RECENT_MEMO,
+  type: GET_PREVIOUS_MEMO,
   payload,
 });
 export const updateMemo = (payload) => ({
@@ -65,8 +65,8 @@ const getRecentMemoSaga = createPromiseSaga(
   webAPI.getRecentMemo
 );
 const getPreviousMemoSaga = createPromiseSaga(
-  GET_RECENT_MEMO,
-  webAPI.getRecentMemo
+  GET_PREVIOUS_MEMO,
+  webAPI.getPreviousMemo
 );
 
 const updateMemoSaga = createPromiseSaga(UPDATE_MEMO, webAPI.updateMemo);

@@ -10,21 +10,26 @@ import MemoViewerContainer from "./MemoViewerContainer";
 
 export default function App() {
   const dispatch = useDispatch();
-  const memos = useSelector((state) => state.memo.data, shallowEqual);
-  const current = useRef(null);
+  const memos = useSelector((state) => state.memo.data);
+  // const current = useRef(null);
+  var cursor = 0;
 
   useEffect(() => {
     dispatch(getInitialMemo());
+  }, []);
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    // console.log(scrollListener);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-  useEffect(() => {
-    current.current = memos;
   }, [memos]);
 
-  const handleScroll = (e) => {
+  // useEffect(() => {
+  //   current.current = memos;
+  // }, [memos]);
+
+  const handleScroll = () => {
     const { clientHeight } = document.body;
     const { innerHeight } = window;
 
@@ -32,7 +37,11 @@ export default function App() {
       document.documentElement.scrollTop || document.body.scrollTop;
 
     if (clientHeight - innerHeight - scrollTop < 100) {
-      const cursor = current.current[current.current.length - 1].id;
+      var curCursor;
+      if (memos.length === 0) return;
+      curCursor = memos[memos.length - 1].id;
+      if (cursor === curCursor) return;
+      cursor = curCursor;
       // console.log(memos, memos.length - 1);
       console.log(cursor);
       dispatch(memoActions.getPreviousMemo(cursor));
