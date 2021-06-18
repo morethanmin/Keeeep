@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { media } from "../lib/style-utils";
+import { media } from "../../lib/style-utils";
 
 const Wrapper = styled.div`
   padding-top: 60px;

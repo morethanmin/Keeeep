@@ -22,9 +22,9 @@ const StyledTextArea = styled(Textarea)`
 `;
 
 const InputSet = ({ onChange, title, body }) => {
-  const titleRef = useRef();
+  const memoRef = useRef();
   useEffect(() => {
-    titleRef.current.focus();
+    memoRef.current.focus();
   }, []);
 
   return (
@@ -34,12 +34,12 @@ const InputSet = ({ onChange, title, body }) => {
         onChange={onChange}
         placeholder="제목"
         value={title}
-        ref={titleRef}
       />
       <StyledTextArea
+        ref={memoRef}
         minRows={3}
         maxRows={20}
-        placeholder="메모를 입력하세요..."
+        placeholder="메모 작성..."
         name="body"
         onChange={onChange}
         value={body}

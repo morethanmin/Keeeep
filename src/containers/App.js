@@ -1,7 +1,7 @@
 import { getInitialMemo } from "modules/memo";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import Header from "../components/Header";
+import Header from "../components/Layout/Header";
 import Layout from "../components/Layout";
 import MemoListContainer from "./MemoListContainer";
 import WriteMemo from "./WriteMemo";

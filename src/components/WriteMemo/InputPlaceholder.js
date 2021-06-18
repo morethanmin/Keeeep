@@ -6,6 +6,6 @@ const Wrapper = styled.div`
   font-size: 1.2rem;
 `;
 
-const InputPlaceholder = () => <Wrapper>메모를 입력하세요...</Wrapper>;
+const InputPlaceholder = () => <Wrapper>메모 작성...</Wrapper>;
 
 export default InputPlaceholder;

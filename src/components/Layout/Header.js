@@ -7,23 +7,29 @@ const Wrapper = styled.div`
   display: flex;
   position: fixed;
   align-items: center;
-  justify-content: center;
-  height: 60px;
+  justify-content: space-between;
+  height: 64px;
   width: 100%;
   top: 0px;
   left: 0px;
   z-index: 5;
 
   /* 색상 */
-  background: ${oc.gray[8]};
-  color: white;
-  border-bottom: 1px solid ${oc.gray[9]};
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
+  background: white;
+  color: #5f6368;
+  border-bottom: 1px solid #d9dce0;
 
   /* 폰트 */
-  font-family: "Baloo", cursive;
-  font-size: 2.5rem;
+  /* font-family: "Baloo", cursive; */
+  font-size: 1.8rem;
+  font-weight: 300;
 `;
 export default function Header() {
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <div>Keep</div>
+      <div>검색</div>
+      <div>tools</div>
+    </Wrapper>
+  );
 }
