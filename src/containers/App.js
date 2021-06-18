@@ -7,24 +7,24 @@ import MemoListContainer from "./MemoListContainer";
 import WriteMemo from "./WriteMemo";
 import * as memoActions from "modules/memo";
 import MemoViewerContainer from "./MemoViewerContainer";
+import Spinner from "components/Spinner";
 
 export default function App() {
   const dispatch = useDispatch();
-  const memos = useSelector((state) => state.memo.data, shallowEqual);
-  const current = useRef(null);
+  const { data: memos, loading } = useSelector((state) => state.memo);
+  var cursor = 0;
 
   useEffect(() => {
     dispatch(getInitialMemo());
+  }, []);
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-  useEffect(() => {
-    current.current = memos;
   }, [memos]);
 
-  const handleScroll = (e) => {
+  const handleScroll = () => {
     const { clientHeight } = document.body;
     const { innerHeight } = window;
 
@@ -32,9 +32,12 @@ export default function App() {
       document.documentElement.scrollTop || document.body.scrollTop;
 
     if (clientHeight - innerHeight - scrollTop < 100) {
-      const cursor = current.current[current.current.length - 1].id;
-      // console.log(memos, memos.length - 1);
-      console.log(cursor);
+      var curCursor;
+      if (memos.length === 0) return;
+      curCursor = memos[memos.length - 1].id;
+      if (cursor === curCursor) return;
+      cursor = curCursor;
+      if (cursor === 1) return;
       dispatch(memoActions.getPreviousMemo(cursor));
     }
   };
@@ -53,6 +56,7 @@ export default function App() {
       <Layout.Main>
         <WriteMemo />
         <MemoListContainer />
+        <Spinner visible={loading} />
       </Layout.Main>
       <MemoViewerContainer />
     </Layout>
