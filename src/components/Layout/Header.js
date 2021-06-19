@@ -2,13 +2,13 @@ import oc from "open-color";
 import React from "react";
 import styled, { css } from "styled-components";
 import {
-  IoIosMenu,
   IoIosSearch,
   IoIosPaper,
   IoMdRefresh,
   IoMdSettings,
 } from "react-icons/io";
 import { CgMenuGridO } from "react-icons/cg";
+import { MdMenu } from "react-icons/md";
 
 const Wrapper = styled.div`
   /* 레이아웃 */
@@ -142,11 +142,11 @@ export default function Header() {
     <Wrapper>
       <LeftBox>
         <Menu>
-          <IoIosMenu />
+          <MdMenu />
         </Menu>
         <Logo>
           <IoIosPaper />
-          <div>Keep</div>
+          <div>Keeeep</div>
         </Logo>
       </LeftBox>
       <MiddleBox>

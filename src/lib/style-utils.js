@@ -2,7 +2,7 @@ import { css, keyframes } from "styled-components";
 
 export const media = {
   desktop: (...args) => css`
-    @media (max-width: 1200px) {
+    @media (max-width: 1300px) {
       ${css(...args)}
     }
   `,
@@ -12,7 +12,7 @@ export const media = {
     }
   `,
   mobile: (...args) => css`
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       ${css(...args)}
     }
   `,
