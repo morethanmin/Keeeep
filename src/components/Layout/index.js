@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { media } from "../../lib/style-utils";
 
 const Wrapper = styled.div`
-  padding-top: 60px;
+  padding-top: 70px;
 `;
 const Layout = ({ children }) => <Wrapper>{children}</Wrapper>;
 

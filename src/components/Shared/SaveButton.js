@@ -13,10 +13,11 @@ const Button = styled.div`
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  color: ${oc.indigo[7]};
+  color: black;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
 
   &:hover {
     background: ${oc.gray[1]};
@@ -28,7 +29,7 @@ const Button = styled.div`
 
 const SaveButton = ({ onClick }) => (
   <Wrapper>
-    <Button onClick={onClick}>완료</Button>
+    <Button onClick={onClick}>닫기</Button>
   </Wrapper>
 );
 

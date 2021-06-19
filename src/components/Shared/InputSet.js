@@ -6,7 +6,7 @@ const TitleInput = styled.input`
   width: 100%;
   border: none;
   outline: none;
-  font-weight: bold;
+  font-weight: 400;
   font-size: 1rem;
 `;
 
@@ -16,7 +16,7 @@ const StyledTextArea = styled(Textarea)`
   border: none;
   outline: none;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-top: 1rem;
   resize: none;
 `;

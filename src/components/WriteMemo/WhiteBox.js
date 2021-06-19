@@ -2,10 +2,9 @@ import styled from "styled-components";
 import oc from "open-color";
 import { media } from "lib/style-utils";
 const WhiteBox = styled.div`
-  width: 700px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 1rem;
-
+  padding: 0.7rem 1rem;
   background: white;
   color: ${oc.gray[6]};
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -14,14 +13,6 @@ const WhiteBox = styled.div`
   cursor: text;
 
   border-radius: 10px;
-
-  ${media.desktop`
-        width: 500px;
-    `}
-
-  ${media.tablet`
-        width: 100%;
-    `}
 `;
 
 export default WhiteBox;
