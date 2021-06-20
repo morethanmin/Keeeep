@@ -13,6 +13,8 @@ const Contents = styled.div`
 
   /* 텍스트가 길어지면 새 줄 생성; 박스 밖의 것은 숨김 */
   white-space: pre-wrap;
+  word-wrap: break-word;
+
   overflow: hidden;
 
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);

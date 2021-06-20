@@ -4,9 +4,9 @@ import oc from "open-color";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
-    text-align: center;
-    margin-top: 32px;
-    margin-bottom: 32px;0
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
 `;
 
 const Spinner = ({ visible }) =>
