@@ -4,35 +4,34 @@ import Memo from "./Memo";
 const { default: styled } = require("styled-components");
 
 const Wrapper = styled.div`
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
-  grid-gap: 1rem;
-`;
+  column-count: 3;
 
-const Column = styled.div`
-  display: grid;
-  grid-gap: 0.6rem;
-  grid-auto-rows: max-content;
+  column-gap: 1rem;
+  column-fill: auto;
+
+  margin-top: 2rem;
+  font-size: 0px; /* inline-block 위아래 사이에 생기는 여백을 제거합니다 */
+
+  ${media.mobile`
+    margin-top: 0.25rem;
+  `}
+
+  .memo-enter {
+    animation: ${transitions.stretchOut} 0.3s ease-in;
+    animation-fill-mode: forwards;
+  }
+
+  .memo-leave {
+    animation: ${transitions.shrinkIn} 0.15s ease-in;
+    animation-fill-mode: forwards;
+  }
 `;
 
 const MemoList = ({ memos, onOpen }) => {
   const memoList = memos.map((memo) => (
     <Memo key={memo.id} memo={memo} onOpen={onOpen} />
   ));
-
-  const output = memoList.reduce((acc, child, i) => {
-    acc[i % 3] = [...acc[i % 3], child];
-    return acc;
-  }, new Array(3).fill([]));
-
-  return (
-    <Wrapper columns={3}>
-      {output.map((column, i) => (
-        <Column key={i}>{column}</Column>
-      ))}
-    </Wrapper>
-  );
+  return <Wrapper>{memoList}</Wrapper>;
 };
 
 export default MemoList;
