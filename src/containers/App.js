@@ -53,9 +53,14 @@ export default function App() {
   return (
     <Layout>
       <Header />
+
       <Layout.Main>
-        <WriteMemo />
-        {loading ? <Spinner visible={loading} /> : <MemoListContainer />}
+        <Layout.Nav>d</Layout.Nav>
+
+        <Layout.Content>
+          <WriteMemo />
+          {loading ? <Spinner visible={loading} /> : <MemoListContainer />}
+        </Layout.Content>
       </Layout.Main>
       <MemoViewerContainer />
     </Layout>
