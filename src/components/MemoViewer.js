@@ -23,7 +23,7 @@ const Viewer = styled.div`
   position: fixed;
   height: auto;
   z-index: 15;
-
+  border-radius: 10px;
   padding: 1rem;
   top: 50%;
   left: 50%;

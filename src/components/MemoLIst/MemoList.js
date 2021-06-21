@@ -1,29 +1,35 @@
 import { media, transitions } from "lib/style-utils";
 import Memo from "./Memo";
-import Masonry from "react-masonry-css";
 import { useEffect, useRef, useState } from "react";
 
 const { default: styled } = require("styled-components");
 
-const StyledMasonry = styled(Masonry)`
-  margin-top: 3rem;
+const Wrapper = styled.div`
   padding: 0 5rem;
-  display: flex;
-  width: auto;
-  .column {
-    padding: 0 0.5rem;
-  }
+
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
+  grid-gap: 1rem;
+`;
+
+const Column = styled.div`
+  display: grid;
+  grid-gap: 0rem;
+  grid-auto-rows: max-content;
 `;
 
 const MemoList = ({ memos, onOpen }) => {
   const ref = useRef();
-  const [cols, setCols] = useState(0);
+  const [cols, setCols] = useState(1);
   const memoList = memos.map((memo) => (
     <Memo key={memo.id} memo={memo} onOpen={onOpen} />
   ));
+
   useEffect(() => {
-    setCols(parseInt(ref.current.scrollWidth / 240));
+    handleResize();
   }, [ref]);
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -32,24 +38,25 @@ const MemoList = ({ memos, onOpen }) => {
   }, []);
 
   const handleResize = (e) => {
-    setCols(parseInt(ref.current.scrollWidth / 240));
+    const colsNum = parseInt(ref.current.scrollWidth / 240);
+    if (colsNum === 0) setCols(1);
+    else setCols(colsNum);
   };
+
+  const output = memoList.reduce((acc, child, i) => {
+    acc[i % cols] = [...acc[i % cols], child];
+    return acc;
+  }, new Array(cols).fill([]));
+  console.log(cols);
 
   return (
     <div ref={ref}>
-      <StyledMasonry
-        breakpointCols={cols}
-        className="grid"
-        columnClassName="column"
-      >
-        {memoList}
-      </StyledMasonry>
+      <Wrapper columns={cols}>
+        {output.map((column, i) => (
+          <Column key={i}>{column}</Column>
+        ))}
+      </Wrapper>
     </div>
-    // <Wrapper columns={3}>
-    //   {output.map((column, i) => (
-    //     <Column key={i}>{column}</Column>
-    //   ))}
-    // </Wrapper>
   );
 };
 

@@ -1,4 +1,3 @@
-import oc from "open-color";
 import React from "react";
 import styled, { css } from "styled-components";
 import {
@@ -9,6 +8,7 @@ import {
 } from "react-icons/io";
 import { CgMenuGridO } from "react-icons/cg";
 import { MdMenu } from "react-icons/md";
+import Button from "components/Shared/Button";
 
 const Wrapper = styled.div`
   /* 레이아웃 */
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   width: 100%;
   top: 0px;
   left: 0px;
-  padding: 0px 20px;
+  padding: 0px 10px;
   z-index: 5;
 
   /* 색상 */
@@ -91,7 +91,7 @@ const Search = styled.form`
   height: 46px;
   margin: 0px 10px;
   > * {
-    margin-left: 15px;
+    margin-left: 5px;
   }
   > svg {
     font-size: 1.5rem;
@@ -134,7 +134,7 @@ const Profile = styled.div`
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-  margin-left: 20px;
+  margin-left: 5px;
 `;
 
 export default function Header() {
@@ -142,7 +142,9 @@ export default function Header() {
     <Wrapper>
       <LeftBox>
         <Menu>
-          <MdMenu />
+          <Button tooltip="기본 메뉴">
+            <MdMenu />
+          </Button>
         </Menu>
         <Logo>
           <IoIosPaper />
@@ -151,16 +153,24 @@ export default function Header() {
       </LeftBox>
       <MiddleBox>
         <Search>
-          <IoIosSearch />
+          <Button tooltip="검색">
+            <IoIosSearch />
+          </Button>
           <input type="text" placeholder="검색" />
         </Search>
         <SettingBox>
-          <IoMdRefresh />
-          <IoMdSettings />
+          <Button tooltip="새로고침">
+            <IoMdRefresh />
+          </Button>
+          <Button tooltip="설정">
+            <IoMdSettings />
+          </Button>
         </SettingBox>
       </MiddleBox>
       <RightBox>
-        <CgMenuGridO />
+        <Button tooltip="morethanmin 앱">
+          <CgMenuGridO />
+        </Button>
         <Profile>상민</Profile>
       </RightBox>
     </Wrapper>
