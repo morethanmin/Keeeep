@@ -7,10 +7,9 @@ const Wrapper = styled.div`
 
 const StyledButton = styled.button`
   border: none;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
   display: flex;
+  align-items: center;
+  padding: ${({ size }) => size}px;
   justify-content: center;
   background: transparent;
   color: #5f6368;
@@ -38,10 +37,17 @@ const Tootip = styled.div`
   padding: 3px 10px;
 `;
 
-export default function Button({ onClick, tooltip = "", children }) {
+export default function Button({
+  size = "10",
+  onClick,
+  tooltip = "",
+  children,
+}) {
   return (
     <Wrapper>
-      <StyledButton onClick={onClick}>{children}</StyledButton>
+      <StyledButton size={size} onClick={onClick}>
+        {children}
+      </StyledButton>
       {tooltip !== "" ? <Tootip>{tooltip}</Tootip> : null}
     </Wrapper>
   );

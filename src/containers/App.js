@@ -8,6 +8,7 @@ import WriteMemo from "./WriteMemo";
 import * as memoActions from "modules/memo";
 import MemoViewerContainer from "./MemoViewerContainer";
 import Spinner from "components/Spinner";
+import SideBar from "components/Layout/SideBar";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -42,20 +43,14 @@ export default function App() {
     }
   };
 
-  //5초마다 불러오는데 , memos가 갱신이 안되는 이슈
-  const getRecentMemo = () => {
-    console.log(memos);
-    setTimeout(() => {
-      getRecentMemo();
-    }, 1000 * 5);
-  };
-
   return (
     <Layout>
       <Header />
 
       <Layout.Main>
-        <Layout.Nav>navbar</Layout.Nav>
+        <Layout.Nav>
+          <SideBar></SideBar>
+        </Layout.Nav>
 
         <Layout.Content>
           <WriteMemo />

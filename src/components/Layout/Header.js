@@ -142,7 +142,7 @@ export default function Header() {
     <Wrapper>
       <LeftBox>
         <Menu>
-          <Button tooltip="기본 메뉴">
+          <Button size={13} tooltip="기본 메뉴">
             <MdMenu />
           </Button>
         </Menu>
