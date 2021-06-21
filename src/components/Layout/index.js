@@ -1,11 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import { media } from "../../lib/style-utils";
+import Header from "./Header";
+import SideBar from "./SideBar";
 
 const Wrapper = styled.div`
   padding-top: 70px;
 `;
-const Layout = ({ children }) => <Wrapper>{children}</Wrapper>;
+
+const Layout = ({ children }) => (
+  <Wrapper>
+    <Header />
+
+    <Layout.Main>
+      <Layout.Nav>
+        <SideBar></SideBar>
+      </Layout.Nav>
+
+      <Layout.Content>{children}</Layout.Content>
+    </Layout.Main>
+  </Wrapper>
+);
 
 Layout.Main = styled.div`
   display: flex;
