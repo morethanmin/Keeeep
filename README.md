@@ -8,7 +8,7 @@
 
 ## Preview
 
-![image](https://user-images.githubusercontent.com/72514247/122663114-2391e280-d1d3-11eb-99bc-f914a086b9a5.png)
+![image](https://user-images.githubusercontent.com/72514247/123062653-b2a73080-d447-11eb-852b-9b39b76b848e.png)
 
 ## Features
 
