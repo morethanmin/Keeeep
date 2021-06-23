@@ -1,4 +1,3 @@
-import { media, transitions } from "lib/style-utils";
 import Memo from "./Memo";
 import { useEffect, useRef, useState } from "react";
 

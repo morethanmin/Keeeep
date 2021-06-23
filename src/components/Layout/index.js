@@ -8,19 +8,21 @@ const Wrapper = styled.div`
   padding-top: 70px;
 `;
 
-const Layout = ({ children }) => (
-  <Wrapper>
-    <Header />
+const Layout = ({ layout, handleMenuClick, children }) => {
+  const { menu } = layout;
+  return (
+    <Wrapper>
+      <Header handleMenuClick={handleMenuClick} />
+      <Layout.Main>
+        <Layout.Nav>
+          <SideBar menu={menu} />
+        </Layout.Nav>
 
-    <Layout.Main>
-      <Layout.Nav>
-        <SideBar></SideBar>
-      </Layout.Nav>
-
-      <Layout.Content>{children}</Layout.Content>
-    </Layout.Main>
-  </Wrapper>
-);
+        <Layout.Content>{children}</Layout.Content>
+      </Layout.Main>
+    </Wrapper>
+  );
+};
 
 Layout.Main = styled.div`
   display: flex;

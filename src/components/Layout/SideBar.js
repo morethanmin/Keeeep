@@ -9,7 +9,6 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
 const path = "/";
-const activated = false;
 const sideBarData = [
   {
     name: "메모",
@@ -70,6 +69,8 @@ const Nav = styled.nav`
     //name 폰트 사이즈
     font-size: 0.9rem;
   }
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100px;
 
   ${({ activated }) =>
     activated
@@ -119,18 +120,18 @@ const Item = styled.div`
         `}
 `;
 
-export default function SideBar() {
+export default function SideBar({ menu }) {
   const history = useHistory();
 
   return (
-    <Nav activated={activated}>
+    <Nav activated={menu}>
       {sideBarData.map((data, idx) => (
         <Item
           key={idx}
           onClick={() => {
             history.push(data.path);
           }}
-          activated={activated}
+          activated={menu}
           selected={path === data.path}
         >
           <button>{data.ico}</button>

@@ -10,6 +10,8 @@ const OPEN_VIEWER = "ui/memo/OPEN_VIEWER";
 const CLOSE_VIEWER = "ui/memo/CLOSE_VIEWER";
 const CHANGE_VIEWER_INPUT = "ui/memo/CHANGE_VIEWER_INPUT";
 
+const TOGGLE_MENU_OPEN = "ui/memo/TOGGLE_MENU_OPEN";
+
 export const focusInput = () => ({ type: FOCUS_INPUT });
 export const blurInput = () => ({ type: BLUR_INPUT });
 export const changeInput = (payload) => ({ type: CHANGE_INPUT, payload });
@@ -20,6 +22,9 @@ export const closeViewer = () => ({ type: CLOSE_VIEWER });
 export const changeViewerInput = (payload) => ({
   type: CHANGE_VIEWER_INPUT,
   payload,
+});
+export const toggleMenuOpen = () => ({
+  type: TOGGLE_MENU_OPEN,
 });
 
 const initialState = {
@@ -35,6 +40,9 @@ const initialState = {
       title: null,
       body: null,
     },
+  },
+  layout: {
+    menu: false,
   },
 };
 
@@ -104,6 +112,15 @@ const uiReducer = (state = initialState, action) => {
             ...state.memo.info,
             [memoInput.name]: memoInput.value,
           },
+        },
+      };
+
+    case TOGGLE_MENU_OPEN:
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          menu: !state.layout.menu,
         },
       };
 

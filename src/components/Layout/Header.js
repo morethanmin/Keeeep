@@ -137,12 +137,12 @@ const Profile = styled.div`
   margin-left: 5px;
 `;
 
-export default function Header() {
+export default function Header({ handleMenuClick }) {
   return (
     <Wrapper>
       <LeftBox>
         <Menu>
-          <Button size={13} tooltip="기본 메뉴">
+          <Button onClick={handleMenuClick} size={13} tooltip="기본 메뉴">
             <MdMenu />
           </Button>
         </Menu>
