@@ -42,7 +42,7 @@ export default function Index() {
   return (
     <>
       <WriteMemo />
-      {loading ? <Spinner visible={loading} /> : <MemoListContainer />}
+      {loading ? null : <MemoListContainer />}
       <MemoViewerContainer />
     </>
   );

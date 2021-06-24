@@ -63,27 +63,32 @@ const initialState = {
       open: false,
       info: [
         {
+          id: 0,
           name: "메모",
           ico: <AiOutlineBulb />,
           data: "/",
         },
         {
+          id: 1,
           name: "라벨이름",
           ico: <MdLabelOutline />,
           data: "/label",
         },
         {
+          id: 2,
           name: "라벨 수정",
           ico: <HiOutlinePencil />,
           type: "dispatch",
           data: openLabel,
         },
         {
+          id: 3,
           name: "보관처리",
           ico: <BiArchiveIn />,
           data: "/archive",
         },
         {
+          id: 4,
           name: "휴지통",
           ico: <FaRegTrashAlt />,
           data: "/trash",

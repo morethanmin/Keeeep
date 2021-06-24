@@ -20,7 +20,7 @@ const Column = styled.div`
 
 const MemoList = ({ memos, onOpen }) => {
   const ref = useRef();
-  const [cols, setCols] = useState(1);
+  const [cols, setCols] = useState(4);
   const memoList = memos.map((memo) => (
     <Memo key={memo.id} memo={memo} onOpen={onOpen} />
   ));

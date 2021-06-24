@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { useDispatch } from "react-redux";
 
-const path = "/";
-
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
@@ -22,6 +20,7 @@ const Nav = styled.nav`
     color: #5f6368;
     font-size: 1.5rem;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   //각각의 Menu
@@ -40,7 +39,7 @@ const Nav = styled.nav`
     font-size: 0.9rem;
   }
   transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 100px;
+  width: 75px;
 
   ${({ activated }) =>
     activated

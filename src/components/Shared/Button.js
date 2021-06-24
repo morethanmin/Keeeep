@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  z-index: 9999;
+
   position: relative;
 `;
 
 const StyledButton = styled.button`
+  z-index: 9999;
+
   border: none;
   display: flex;
   cursor: pointer;
@@ -25,6 +29,9 @@ const StyledButton = styled.button`
 `;
 const Tootip = styled.div`
   position: absolute;
+  overflow: visible;
+
+  z-index: 9999;
   width: max-content;
   left: 50%;
   bottom: 0px;
@@ -49,7 +56,7 @@ export default function Button({
       <StyledButton size={size} onClick={onClick}>
         {children}
       </StyledButton>
-      {tooltip !== "" ? <Tootip>{tooltip}</Tootip> : null}
+      {!!tooltip && <Tootip>{tooltip}</Tootip>}
     </Wrapper>
   );
 }
