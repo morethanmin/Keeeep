@@ -57,6 +57,7 @@ const Menu = styled.div`
 `;
 
 const Logo = styled.div`
+  cursor: pointer;
   svg {
     color: #fbbc04;
     font-size: 2.2rem;

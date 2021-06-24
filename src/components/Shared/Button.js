@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 const StyledButton = styled.button`
   border: none;
   display: flex;
+  cursor: pointer;
   align-items: center;
   padding: ${({ size }) => size}px;
   justify-content: center;

@@ -1,5 +1,8 @@
-import { handleActions } from "redux-actions";
-import { Map } from "immutable";
+import { MdMenu, MdLabelOutline } from "react-icons/md";
+import { AiOutlineBulb } from "react-icons/ai";
+import { BiBell, BiArchiveIn } from "react-icons/bi";
+import { HiOutlinePencil } from "react-icons/hi";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const FOCUS_INPUT = "ui/write/FOCUS_INPUT";
 const BLUR_INPUT = "ui/write/BLUR_INPUT";
@@ -10,7 +13,10 @@ const OPEN_VIEWER = "ui/memo/OPEN_VIEWER";
 const CLOSE_VIEWER = "ui/memo/CLOSE_VIEWER";
 const CHANGE_VIEWER_INPUT = "ui/memo/CHANGE_VIEWER_INPUT";
 
-const TOGGLE_MENU_OPEN = "ui/memo/TOGGLE_MENU_OPEN";
+const OPEN_LABEL = "ui/label/OPEN_LABEL";
+const CLOSE_LABEL = "ui/label/CLOSE_LABEL";
+
+const TOGGLE_MENU = "ui/layout/TOGGLE_MENU";
 
 export const focusInput = () => ({ type: FOCUS_INPUT });
 export const blurInput = () => ({ type: BLUR_INPUT });
@@ -19,12 +25,16 @@ export const resetInput = () => ({ type: RESET_INPUT });
 
 export const openViewer = (payload) => ({ type: OPEN_VIEWER, payload });
 export const closeViewer = () => ({ type: CLOSE_VIEWER });
+
+export const openLabel = () => ({ type: OPEN_LABEL });
+export const closeLabel = () => ({ type: CLOSE_LABEL });
+
 export const changeViewerInput = (payload) => ({
   type: CHANGE_VIEWER_INPUT,
   payload,
 });
-export const toggleMenuOpen = () => ({
-  type: TOGGLE_MENU_OPEN,
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
 });
 
 const initialState = {
@@ -41,8 +51,45 @@ const initialState = {
       body: null,
     },
   },
+  label: {
+    open: false,
+    info: {
+      input: "",
+      label: [],
+    },
+  },
   layout: {
-    menu: false,
+    sidebar: {
+      open: false,
+      info: [
+        {
+          name: "메모",
+          ico: <AiOutlineBulb />,
+          data: "/",
+        },
+        {
+          name: "라벨이름",
+          ico: <MdLabelOutline />,
+          data: "/label",
+        },
+        {
+          name: "라벨 수정",
+          ico: <HiOutlinePencil />,
+          type: "dispatch",
+          data: openLabel,
+        },
+        {
+          name: "보관처리",
+          ico: <BiArchiveIn />,
+          data: "/archive",
+        },
+        {
+          name: "휴지통",
+          ico: <FaRegTrashAlt />,
+          data: "/trash",
+        },
+      ],
+    },
   },
 };
 
@@ -115,12 +162,32 @@ const uiReducer = (state = initialState, action) => {
         },
       };
 
-    case TOGGLE_MENU_OPEN:
+    case OPEN_LABEL:
+      return {
+        ...state,
+        label: {
+          ...state.label,
+          open: true,
+        },
+      };
+    case CLOSE_LABEL:
+      return {
+        ...state,
+        label: {
+          ...state.label,
+          open: false,
+        },
+      };
+
+    case TOGGLE_MENU:
       return {
         ...state,
         layout: {
           ...state.layout,
-          menu: !state.layout.menu,
+          sidebar: {
+            ...state.layout.sidebar,
+            open: !state.layout.sidebar.open,
+          },
         },
       };
 

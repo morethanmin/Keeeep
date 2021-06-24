@@ -10,7 +10,7 @@ export default function App() {
   const layout = useSelector((state) => state.ui.layout);
 
   const handleMenuClick = () => {
-    dispatch(uiActions.toggleMenuOpen());
+    dispatch(uiActions.toggleMenu());
   };
   return (
     <Layout layout={layout} handleMenuClick={handleMenuClick}>

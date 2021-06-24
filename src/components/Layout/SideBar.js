@@ -1,46 +1,16 @@
-import { useHistory } from "react-router-dom";
-import React from "react";
-import { MdMenu, MdLabelOutline } from "react-icons/md";
-import { AiOutlineBulb } from "react-icons/ai";
-import { BiBell, BiArchiveIn } from "react-icons/bi";
-import { HiOutlinePencil } from "react-icons/hi";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { useHistory, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 import styled, { css } from "styled-components";
+import { useDispatch } from "react-redux";
 
 const path = "/";
-const sideBarData = [
-  {
-    name: "메모",
-    ico: <AiOutlineBulb />,
-    path: "/",
-  },
-  {
-    name: "라벨이름",
-    ico: <MdLabelOutline />,
-    path: "/label",
-  },
-  {
-    name: "라벨 수정",
-    ico: <HiOutlinePencil />,
-    path: "",
-  },
-  {
-    name: "보관처리",
-    ico: <BiArchiveIn />,
-    path: "",
-  },
-  {
-    name: "휴지통",
-    ico: <FaRegTrashAlt />,
-    path: "",
-  },
-];
 
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   color: #5f6368;
+  cursor: pointer;
 
   button {
     border: none;
@@ -69,7 +39,7 @@ const Nav = styled.nav`
     //name 폰트 사이즈
     font-size: 0.9rem;
   }
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100px;
 
   ${({ activated }) =>
@@ -120,19 +90,40 @@ const Item = styled.div`
         `}
 `;
 
-export default function SideBar({ menu }) {
+export default function SideBar({ sidebar }) {
+  const { open, info } = sidebar;
   const history = useHistory();
+  const location = useLocation();
+  const dispatch = useDispatch();
 
+  const [path, setPath] = useState("");
+  useEffect(() => {
+    setPath(location.pathname);
+  }, [location]);
+
+  const handleNavItemClick = (item) => {
+    const { type, data } = item;
+
+    switch (type) {
+      case "dispatch":
+        dispatch(data());
+        break;
+
+      default:
+        history.push(data);
+        break;
+    }
+  };
   return (
-    <Nav activated={menu}>
-      {sideBarData.map((data, idx) => (
+    <Nav activated={open}>
+      {info.map((data, idx) => (
         <Item
           key={idx}
           onClick={() => {
-            history.push(data.path);
+            handleNavItemClick(data);
           }}
-          activated={menu}
-          selected={path === data.path}
+          activated={open}
+          selected={path === data.data}
         >
           <button>{data.ico}</button>
           <div>{data.name}</div>

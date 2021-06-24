@@ -9,13 +9,13 @@ const Wrapper = styled.div`
 `;
 
 const Layout = ({ layout, handleMenuClick, children }) => {
-  const { menu } = layout;
+  const { sidebar } = layout;
   return (
     <Wrapper>
       <Header handleMenuClick={handleMenuClick} />
       <Layout.Main>
         <Layout.Nav>
-          <SideBar menu={menu} />
+          <SideBar sidebar={sidebar} />
         </Layout.Nav>
 
         <Layout.Content>{children}</Layout.Content>
