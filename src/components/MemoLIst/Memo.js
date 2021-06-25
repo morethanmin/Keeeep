@@ -1,10 +1,7 @@
 import oc from "open-color";
-import { BiPin, BiPalette } from "react-icons/bi";
-import { MdLabelOutline } from "react-icons/md";
-import { BiArchiveIn } from "react-icons/bi";
-import { FaRegTrashAlt } from "react-icons/fa";
 
 import Button from "components/Shared/Button";
+import ToolBox from "components/Shared/ToolBox";
 
 const { default: styled } = require("styled-components");
 
@@ -39,66 +36,6 @@ const Body = styled.div`
   color: ${oc.gray[7]};
 `;
 
-const Wrap = styled.div``;
-const ToolBox = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 0.5rem;
-  opacity: 0;
-  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  &:hover {
-    opacity: 1;
-  }
-
-  > div {
-    display: flex;
-    svg {
-      font-size: 1.1rem;
-    }
-    color: #5f6368;
-  }
-`;
-const ToolBoxTop = styled.div`
-  flex-direction: row-reverse;
-`;
-const ToolBoxBottom = styled.div``;
-
-const HoverTool = ({ children }) => {
-  return (
-    <Wrap>
-      <ToolBox>
-        <ToolBoxTop>
-          <Button tooltip="fff">
-            <BiPin />
-          </Button>
-        </ToolBoxTop>
-        <ToolBoxBottom>
-          <Button tooltip="fff">
-            <BiPalette />
-          </Button>
-          <Button>
-            <MdLabelOutline />
-          </Button>
-          <Button>
-            <BiArchiveIn />
-          </Button>
-          <Button>
-            <FaRegTrashAlt />
-          </Button>
-        </ToolBoxBottom>
-      </ToolBox>
-      <div>{children}</div>
-    </Wrap>
-  );
-};
-
 const Memo = ({ memo, onOpen }) => {
   const { title, body } = memo;
 
@@ -108,10 +45,9 @@ const Memo = ({ memo, onOpen }) => {
 
   return (
     <Wrapper onClick={handleClick}>
-      <HoverTool>
-        {title && <Title>{title}</Title>}
-        <Body>{body}</Body>
-      </HoverTool>
+      <ToolBox visibleOnHover />
+      {title && <Title>{title}</Title>}
+      <Body>{body}</Body>
     </Wrapper>
   );
 };

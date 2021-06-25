@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import oc from "open-color";
 const WhiteBox = styled.div`
+  position: relative;
   max-width: 600px;
   margin: 0 auto;
   padding: 0.7rem 1rem;

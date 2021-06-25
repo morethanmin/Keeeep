@@ -35,6 +35,6 @@ export default function MemoViewerContainer() {
       }}
       onUpdate={handleUpdate}
       onDelete={handleDelete}
-    />
+    ></MemoViewer>
   );
 }

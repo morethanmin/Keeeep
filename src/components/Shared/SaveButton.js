@@ -4,10 +4,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
+  position: relative;
   text-align: right;
 `;
 
 const Button = styled.div`
+  position: relative;
   display: inline-block;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;

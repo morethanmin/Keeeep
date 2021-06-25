@@ -3,14 +3,17 @@ import styled from "styled-components";
 import Textarea from "react-textarea-autosize";
 
 const TitleInput = styled.input`
+  position: relative;
   width: 100%;
   border: none;
   outline: none;
   font-weight: 400;
   font-size: 1rem;
+  z-index: 10;
 `;
 
 const StyledTextArea = styled(Textarea)`
+  position: relative;
   width: 100%;
   width: 100%;
   border: none;
@@ -19,6 +22,8 @@ const StyledTextArea = styled(Textarea)`
   font-size: 0.9rem;
   margin-top: 1rem;
   resize: none;
+  z-index: 10;
+  margin-bottom: 3rem;
 `;
 
 const InputSet = ({ onChange, title, body }) => {

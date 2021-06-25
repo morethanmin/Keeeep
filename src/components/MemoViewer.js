@@ -5,6 +5,7 @@ import oc from "open-color";
 import { media } from "lib/style-utils";
 
 import { IoIosTrash } from "react-icons/io";
+import ToolBox from "./Shared/ToolBox";
 
 // 화면을 불투명하게 해줍니다.
 const Dimmed = styled.div`
@@ -70,10 +71,13 @@ const MemoViewer = ({
       <Dimmed onClick={onClose} />
       <Viewer>
         <InputSet title={title} body={body} onChange={onChange} />
-        <SaveButton onClick={onUpdate} />
-        <TrashButton onClick={onDelete}>
+        {/* <SaveButton onClick={onUpdate} /> */}
+        {/* <TrashButton onClick={onDelete}>
           <IoIosTrash />
-        </TrashButton>
+        </TrashButton> */}
+        <ToolBox>
+          <SaveButton onClick={onUpdate} />
+        </ToolBox>
       </Viewer>
     </div>
   );
