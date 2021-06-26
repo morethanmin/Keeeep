@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as uiActions from "modules/ui";
 import * as memoActions from "modules/memo";
 import ToolBox from "components/Shared/ToolBox";
+import ToolBoxContainer from "./ToolBoxContainer";
 
 const WriteMemo = () => {
   const WhiteBoxRef = useRef();
@@ -49,7 +50,7 @@ const WriteMemo = () => {
   return focused ? (
     <WhiteBox ref={WhiteBoxRef}>
       <InputSet onChange={handleChange} title={title} body={body} />
-      <ToolBox>
+      <ToolBox memo={write}>
         <SaveButton onClick={handleCreate} />
       </ToolBox>
     </WhiteBox>

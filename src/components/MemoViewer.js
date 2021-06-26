@@ -4,7 +4,7 @@ import styled from "styled-components";
 import oc from "open-color";
 import { media } from "lib/style-utils";
 
-import { IoIosTrash } from "react-icons/io";
+import ToolBoxContainer from "containers/ToolBoxContainer";
 import ToolBox from "./Shared/ToolBox";
 
 // 화면을 불투명하게 해줍니다.
@@ -56,8 +56,7 @@ const TrashButton = styled.div`
 
 const MemoViewer = ({
   visible,
-  title,
-  body,
+  memo,
   onChange,
   onUpdate,
   onDelete,
@@ -65,7 +64,7 @@ const MemoViewer = ({
 }) => {
   // visible 이 아닐경우엔 아무것도 보여주지 않는다
   if (!visible) return null;
-
+  const { title, body } = memo;
   return (
     <div>
       <Dimmed onClick={onClose} />
@@ -75,7 +74,7 @@ const MemoViewer = ({
         {/* <TrashButton onClick={onDelete}>
           <IoIosTrash />
         </TrashButton> */}
-        <ToolBox>
+        <ToolBox memo={memo}>
           <SaveButton onClick={onUpdate} />
         </ToolBox>
       </Viewer>

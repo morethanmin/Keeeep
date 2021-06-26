@@ -19,22 +19,21 @@ export default function MemoViewerContainer() {
     dispatch(uiActions.closeViewer());
   };
 
-  const handleDelete = () => {
-    dispatch(memoActions.deleteMemo(memo.info.id));
-    dispatch(uiActions.closeViewer());
-  };
+  // const handleDelete = () => {
+  //   dispatch(memoActions.deleteMemo(memo.info.id));
+  //   dispatch(uiActions.closeViewer());
+  // };
 
   return (
     <MemoViewer
       visible={open}
-      title={info.title}
-      body={info.body}
+      memo={memo.info}
       onChange={handleChange}
       onClose={() => {
         dispatch(uiActions.closeViewer());
       }}
       onUpdate={handleUpdate}
-      onDelete={handleDelete}
+      // onDelete={handleDelete}
     ></MemoViewer>
   );
 }

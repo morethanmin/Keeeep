@@ -1,6 +1,4 @@
 import oc from "open-color";
-
-import Button from "components/Shared/Button";
 import ToolBox from "components/Shared/ToolBox";
 
 const { default: styled } = require("styled-components");
@@ -39,13 +37,15 @@ const Body = styled.div`
 const Memo = ({ memo, onOpen }) => {
   const { title, body } = memo;
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.cancelBubble = true;
     onOpen(memo);
   };
 
   return (
     <Wrapper onClick={handleClick}>
-      <ToolBox visibleOnHover />
+      <ToolBox memo={memo} visibleOnHover />
+
       {title && <Title>{title}</Title>}
       <Body>{body}</Body>
     </Wrapper>

@@ -52,7 +52,9 @@ const BottomRight = styled.div`
   display: flex;
 `;
 
-export default function ToolBox({ visibleOnHover, children }) {
+export default function ToolBox({ memo = {}, visibleOnHover, children }) {
+  const { id, title, body } = memo;
+  console.log(memo);
   return (
     <Wrapper visibleOnHover={visibleOnHover}>
       <Top>
@@ -71,7 +73,13 @@ export default function ToolBox({ visibleOnHover, children }) {
           <Button tooltip="보관 처리">
             <BiArchiveIn />
           </Button>
-          <Button tooltip="메모 삭제">
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("!!");
+            }}
+            tooltip="메모 삭제"
+          >
             <FaRegTrashAlt />
           </Button>
         </BottomLeft>

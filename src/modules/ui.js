@@ -1,6 +1,6 @@
-import { MdMenu, MdLabelOutline } from "react-icons/md";
+import { MdLabelOutline } from "react-icons/md";
 import { AiOutlineBulb } from "react-icons/ai";
-import { BiBell, BiArchiveIn } from "react-icons/bi";
+import { BiArchiveIn } from "react-icons/bi";
 import { HiOutlinePencil } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
 
