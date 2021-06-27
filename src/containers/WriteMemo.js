@@ -50,9 +50,9 @@ const WriteMemo = () => {
   return focused ? (
     <WhiteBox ref={WhiteBoxRef}>
       <InputSet onChange={handleChange} title={title} body={body} />
-      <ToolBox memo={write}>
+      <ToolBoxContainer type="ui/write" memo={write}>
         <SaveButton onClick={handleCreate} />
-      </ToolBox>
+      </ToolBoxContainer>
     </WhiteBox>
   ) : (
     <WhiteBox ref={WhiteBoxRef} onClick={handleFocus}>

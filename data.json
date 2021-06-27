@@ -1,59 +1,14 @@
 {
   "memo": [
     {
-      "title": "메모작성",
-      "body": "메모작성 내용\n\n\n\n\n",
+      "title": "메모 제목",
+      "body": "메모 내용",
       "id": 1
     },
     {
-      "title": "",
-      "body": "fdsfds",
+      "title": "메모 제목2",
+      "body": "메모 내용",
       "id": 2
-    },
-    {
-      "title": "타이틀",
-      "body": "내용입니다.",
-      "id": 4
-    },
-    {
-      "title": "여러줄도 가능합니다",
-      "body": "ㅇ\nㅇ\nㅇ\nxZxczcvfgsdfsdfsdf\nㅇ",
-      "id": 5
-    },
-    {
-      "title": "1",
-      "body": "ㄹㄴㄹㄴㅇㄹㄴㅇ",
-      "id": 12
-    },
-    {
-      "title": "",
-      "body": "fdsf",
-      "id": 13
-    },
-    {
-      "title": "메모 제목 ",
-      "body": "메모 내용\n\n\n\n\n\n\n\n",
-      "id": 14
-    },
-    {
-      "title": "",
-      "body": "",
-      "id": 15
-    },
-    {
-      "title": "",
-      "body": "",
-      "id": 16
-    },
-    {
-      "title": "",
-      "body": "",
-      "id": 17
-    },
-    {
-      "title": "",
-      "body": "",
-      "id": 18
     }
   ]
 }

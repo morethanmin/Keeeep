@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as uiActions from "modules/ui";
 import * as memoActions from "modules/memo";
+import ToolBoxContainer from "./ToolBoxContainer";
 
 export default function MemoViewerContainer() {
   const memo = useSelector((state) => state.ui.memo);
@@ -19,15 +20,11 @@ export default function MemoViewerContainer() {
     dispatch(uiActions.closeViewer());
   };
 
-  // const handleDelete = () => {
-  //   dispatch(memoActions.deleteMemo(memo.info.id));
-  //   dispatch(uiActions.closeViewer());
-  // };
-
   return (
     <MemoViewer
       visible={open}
       memo={memo.info}
+      toolBox={ToolBoxContainer}
       onChange={handleChange}
       onClose={() => {
         dispatch(uiActions.closeViewer());

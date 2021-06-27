@@ -18,11 +18,11 @@ const Column = styled.div`
   grid-auto-rows: max-content;
 `;
 
-const MemoList = ({ memos, onOpen }) => {
+const MemoList = ({ memos, onOpen, toolBox }) => {
   const ref = useRef();
   const [cols, setCols] = useState(4);
   const memoList = memos.map((memo) => (
-    <Memo key={memo.id} memo={memo} onOpen={onOpen} />
+    <Memo key={memo.id} memo={memo} onOpen={onOpen} toolBox={toolBox} />
   ));
 
   useEffect(() => {
@@ -49,13 +49,11 @@ const MemoList = ({ memos, onOpen }) => {
   console.log(cols);
 
   return (
-    <div ref={ref}>
-      <Wrapper columns={cols}>
-        {output.map((column, i) => (
-          <Column key={i}>{column}</Column>
-        ))}
-      </Wrapper>
-    </div>
+    <Wrapper ref={ref} columns={cols}>
+      {output.map((column, i) => (
+        <Column key={i}>{column}</Column>
+      ))}
+    </Wrapper>
   );
 };
 

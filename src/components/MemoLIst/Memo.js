@@ -1,5 +1,4 @@
 import oc from "open-color";
-import ToolBox from "components/Shared/ToolBox";
 
 const { default: styled } = require("styled-components");
 
@@ -34,7 +33,7 @@ const Body = styled.div`
   color: ${oc.gray[7]};
 `;
 
-const Memo = ({ memo, onOpen }) => {
+const Memo = ({ memo, onOpen, toolBox: ToolBox }) => {
   const { title, body } = memo;
 
   const handleClick = (e) => {
@@ -44,7 +43,7 @@ const Memo = ({ memo, onOpen }) => {
 
   return (
     <Wrapper onClick={handleClick}>
-      <ToolBox memo={memo} visibleOnHover />
+      <ToolBox type="memo" memo={memo} visibleOnHover />
 
       {title && <Title>{title}</Title>}
       <Body>{body}</Body>

@@ -5,7 +5,6 @@ import oc from "open-color";
 import { media } from "lib/style-utils";
 
 import ToolBoxContainer from "containers/ToolBoxContainer";
-import ToolBox from "./Shared/ToolBox";
 
 // 화면을 불투명하게 해줍니다.
 const Dimmed = styled.div`
@@ -36,30 +35,12 @@ const Viewer = styled.div`
     `}
 `;
 
-const TrashButton = styled.div`
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  color: ${oc.gray[6]};
-  cursor: pointer;
-
-  &:hover {
-    color: ${oc.gray[7]};
-  }
-
-  &:active {
-    color: ${oc.gray[8]};
-  }
-
-  font-size: 1.5rem;
-`;
-
 const MemoViewer = ({
   visible,
   memo,
+  toolBox: ToolBox,
   onChange,
   onUpdate,
-  onDelete,
   onClose,
 }) => {
   // visible 이 아닐경우엔 아무것도 보여주지 않는다
@@ -70,11 +51,7 @@ const MemoViewer = ({
       <Dimmed onClick={onClose} />
       <Viewer>
         <InputSet title={title} body={body} onChange={onChange} />
-        {/* <SaveButton onClick={onUpdate} /> */}
-        {/* <TrashButton onClick={onDelete}>
-          <IoIosTrash />
-        </TrashButton> */}
-        <ToolBox memo={memo}>
+        <ToolBox memo={memo} type="ui/memo">
           <SaveButton onClick={onUpdate} />
         </ToolBox>
       </Viewer>
