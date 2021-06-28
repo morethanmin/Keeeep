@@ -13,11 +13,6 @@ const WriteMemo = () => {
   const { focused, info } = write;
   const { title, body } = info;
   const dispatch = useDispatch();
-  useEffect(() => {
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, []);
 
   useEffect(() => {
     window.addEventListener("mousedown", handleClick);
