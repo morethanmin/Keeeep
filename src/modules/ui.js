@@ -40,8 +40,14 @@ export const toggleMenu = () => ({
 const initialState = {
   write: {
     focused: false,
-    title: "",
-    body: "",
+    info: {
+      title: "",
+      body: "",
+      label: [],
+      pinned: false,
+      archived: false,
+      color: "white",
+    },
   },
   memo: {
     open: false,
@@ -122,7 +128,11 @@ const uiReducer = (state = initialState, action) => {
         ...state,
         write: {
           ...state.write,
-          [writeInput.name]: writeInput.value,
+          info: {
+            ...state.write.info,
+
+            [writeInput.name]: writeInput.value,
+          },
         },
       };
     case RESET_INPUT:

@@ -10,7 +10,8 @@ const WriteMemo = () => {
   const WhiteBoxRef = useRef();
   const write = useSelector((state) => state.ui.write);
   const memos = useSelector((state) => state.memo.data);
-  const { focused, title, body } = write;
+  const { focused, info } = write;
+  const { title, body } = info;
   const dispatch = useDispatch();
   useEffect(() => {
     return () => {
@@ -18,18 +19,24 @@ const WriteMemo = () => {
     };
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClick);
+    return () => {
+      window.removeEventListener("mousedown", handleClick);
+    };
+  }, [info, focused]);
+
   const handleFocus = () => {
     if (!focused) {
       dispatch(uiActions.focusInput());
-      document.addEventListener("mousedown", handleClick);
     }
   };
 
-  //title, body가 갱신이 안되서 내용이 있을 땐 blur액션이 일어나지 않게 해야하는데 잘 안됌
+  //title, body가 갱신이 안되서 내용이 있을 땐 blur액션이 일어나지 않게\
   const handleClick = (e) => {
-    if (WhiteBoxRef.current.contains(e.target)) {
-      return;
-    }
+    if (!focused) return;
+    if (title !== "" || body !== "") return;
+    if (WhiteBoxRef.current.contains(e.target)) return;
     dispatch(uiActions.blurInput());
     document.removeEventListener("mousedown", handleClick);
   };
