@@ -8,7 +8,7 @@ import {
 } from "react-icons/io";
 import { CgMenuGridO } from "react-icons/cg";
 import { MdMenu } from "react-icons/md";
-import Button from "components/Shared/Button";
+import Button from "components/shared/Button";
 
 const Wrapper = styled.div`
   /* 레이아웃 */

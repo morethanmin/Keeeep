@@ -4,7 +4,7 @@ import Textarea from "react-textarea-autosize";
 
 const TitleInput = styled.input`
   position: relative;
-  width: 100%;
+  width: 90%;
   border: none;
   outline: none;
   font-weight: 400;

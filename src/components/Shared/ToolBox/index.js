@@ -1,10 +1,9 @@
 import React from "react";
-import Button from "./Button";
+import Button from "../Button";
 import { BiPin, BiPalette } from "react-icons/bi";
 import { MdLabelOutline } from "react-icons/md";
 import { BiArchiveIn } from "react-icons/bi";
 import { FaRegTrashAlt } from "react-icons/fa";
-import SaveButton from "./SaveButton";
 const { default: styled, css } = require("styled-components");
 
 const Wrapper = styled.div`

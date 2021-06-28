@@ -1,10 +1,9 @@
 import React, { Component, useEffect, useRef } from "react";
 import { InputPlaceholder, WhiteBox } from "components/WriteMemo";
-import { InputSet, SaveButton } from "components/Shared";
+import { InputSet, SaveButton } from "components/shared";
 import { useDispatch, useSelector } from "react-redux";
 import * as uiActions from "modules/ui";
 import * as memoActions from "modules/memo";
-import ToolBox from "components/Shared/ToolBox";
 import ToolBoxContainer from "./ToolBoxContainer";
 
 const WriteMemo = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { InputSet, SaveButton } from "components/Shared";
+import { InputSet, SaveButton } from "components/shared";
 import styled from "styled-components";
 import oc from "open-color";
 import { media } from "lib/style-utils";

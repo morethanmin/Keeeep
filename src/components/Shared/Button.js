@@ -2,14 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  z-index: 9999;
-
   position: relative;
 `;
 
 const StyledButton = styled.button`
-  z-index: 9999;
-
   border: none;
   display: flex;
   cursor: pointer;

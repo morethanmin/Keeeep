@@ -1,4 +1,4 @@
-import ToolBox from "components/Shared/ToolBox";
+import ToolBox from "components/shared/ToolBox";
 import React from "react";
 import * as memoActions from "modules/memo";
 import * as uiActions from "modules/ui";
