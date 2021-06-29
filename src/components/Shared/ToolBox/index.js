@@ -4,6 +4,8 @@ import { BiPin, BiPalette } from "react-icons/bi";
 import { MdLabelOutline } from "react-icons/md";
 import { BiArchiveIn } from "react-icons/bi";
 import { FaRegTrashAlt } from "react-icons/fa";
+import ColorPalette from "./ColorPalette";
+
 const { default: styled, css } = require("styled-components");
 
 const Wrapper = styled.div`
@@ -38,10 +40,10 @@ const Wrapper = styled.div`
     color: #5f6368;
   }
 `;
-const Top = styled.div`
+const TopSubWrap = styled.div`
   flex-direction: row-reverse;
 `;
-const Bottom = styled.div`
+const BottomSubWrap = styled.div`
   justify-content: space-between;
 `;
 const BottomLeft = styled.div`
@@ -51,23 +53,29 @@ const BottomRight = styled.div`
   display: flex;
 `;
 
-export default function ToolBox({ visibleOnHover, children, onDelete }) {
+export default function ToolBox({
+  visibleOnHover,
+  children,
+  onPin,
+  onColor,
+  onLabel,
+  onArchive,
+  onDelete,
+}) {
   return (
     <Wrapper visibleOnHover={visibleOnHover}>
-      <Top>
-        <Button tooltip="메모 고정">
+      <TopSubWrap>
+        <Button onClick={onPin} tooltip="메모 고정">
           <BiPin />
         </Button>
-      </Top>
-      <Bottom>
+      </TopSubWrap>
+      <BottomSubWrap>
         <BottomLeft>
-          <Button tooltip="색상 변경">
-            <BiPalette />
-          </Button>
-          <Button tooltip="라벨 선택">
+          <ColorPalette onColor={onColor} />
+          <Button onClick={onLabel} tooltip="라벨 선택">
             <MdLabelOutline />
           </Button>
-          <Button tooltip="보관 처리">
+          <Button onClick={onArchive} tooltip="보관 처리">
             <BiArchiveIn />
           </Button>
           <Button onClick={onDelete} tooltip="메모 삭제">
@@ -75,7 +83,7 @@ export default function ToolBox({ visibleOnHover, children, onDelete }) {
           </Button>
         </BottomLeft>
         <BottomRight>{children}</BottomRight>
-      </Bottom>
+      </BottomSubWrap>
     </Wrapper>
   );
 }

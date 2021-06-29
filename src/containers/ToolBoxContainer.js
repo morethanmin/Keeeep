@@ -14,6 +14,82 @@ export default function ToolBoxContainer({
   const dispatch = useDispatch();
   const { id } = memo;
 
+  const handlePin = (e) => {
+    e.stopPropagation();
+
+    switch (type) {
+      case "memo":
+        console.log("memo", id);
+
+        return;
+      case "ui/memo":
+        console.log("ui/memo", id);
+
+        return;
+      case "ui/write":
+        console.log("ui/write", id);
+
+        return;
+    }
+  };
+
+  const handleColor = (e, color) => {
+    e.stopPropagation();
+
+    switch (type) {
+      case "memo":
+        console.log("memo", color, id);
+
+        return;
+      case "ui/memo":
+        console.log("ui/memo", color, id);
+
+        return;
+      case "ui/write":
+        console.log("ui/write", color, id);
+
+        return;
+    }
+  };
+
+  const handleLabel = (e) => {
+    e.stopPropagation();
+
+    switch (type) {
+      case "memo":
+        console.log("memo", id);
+
+        return;
+      case "ui/memo":
+        console.log("ui/memo", id);
+
+        return;
+      case "ui/write":
+        console.log("ui/write", id);
+
+        return;
+    }
+  };
+
+  const handleArchive = (e) => {
+    e.stopPropagation();
+
+    switch (type) {
+      case "memo":
+        console.log("memo", id);
+
+        return;
+      case "ui/memo":
+        console.log("ui/memo", id);
+
+        return;
+      case "ui/write":
+        console.log("ui/write", id);
+
+        return;
+    }
+  };
+
   const handleDelete = (e) => {
     e.stopPropagation();
     switch (type) {
@@ -24,12 +100,22 @@ export default function ToolBoxContainer({
         dispatch(memoActions.deleteMemo(id));
         dispatch(uiActions.closeViewer());
         return;
+      case "ui/write":
+        //write input 초기화 및 blur 이벤트
+        return;
       default:
         return;
     }
   };
   return (
-    <ToolBox onDelete={handleDelete} visibleOnHover={visibleOnHover}>
+    <ToolBox
+      onPin={handlePin}
+      onColor={handleColor}
+      onLabel={handleLabel}
+      onArchive={handleArchive}
+      onDelete={handleDelete}
+      visibleOnHover={visibleOnHover}
+    >
       {children}
     </ToolBox>
   );
