@@ -11,7 +11,7 @@ const WriteMemo = () => {
   const write = useSelector((state) => state.ui.write);
   const memos = useSelector((state) => state.memo.data);
   const { focused, info } = write;
-  const { title, body } = info;
+  const { title, body, color } = info;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,14 +42,14 @@ const WriteMemo = () => {
   };
 
   const handleCreate = () => {
-    dispatch(memoActions.createMemo({ title, body }));
+    dispatch(memoActions.createMemo({ title, body, color }));
     dispatch(uiActions.resetInput());
     const cursor = memos[0] ? memos[0].id : 0;
     dispatch(memoActions.getRecentMemo(cursor));
   };
 
   return focused ? (
-    <WhiteBox ref={WhiteBoxRef}>
+    <WhiteBox color={color} ref={WhiteBoxRef}>
       <InputSet onChange={handleChange} title={title} body={body} />
       <ToolBoxContainer type="ui/write" memo={write}>
         <SaveButton onClick={handleCreate} />

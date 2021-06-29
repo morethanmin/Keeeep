@@ -46,7 +46,7 @@ const initialState = {
       label: [],
       pinned: false,
       archived: false,
-      color: "white",
+      color: "#FFFFFF",
     },
   },
   memo: {
@@ -55,6 +55,10 @@ const initialState = {
       id: null,
       title: null,
       body: null,
+      label: [],
+      pinned: false,
+      archived: false,
+      color: "#FFFFFF",
     },
   },
   label: {

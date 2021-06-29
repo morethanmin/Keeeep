@@ -22,10 +22,7 @@ const Button = styled.div`
   font-weight: 400;
 
   &:hover {
-    background: ${oc.gray[1]};
-  }
-  &:active {
-    background: ${oc.gray[2]};
+    background: rgba(0, 0, 0, 0.07);
   }
 `;
 

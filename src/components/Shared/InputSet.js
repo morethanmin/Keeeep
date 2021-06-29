@@ -10,6 +10,7 @@ const TitleInput = styled.input`
   font-weight: 400;
   font-size: 1rem;
   z-index: 10;
+  background: transparent;
 `;
 
 const StyledTextArea = styled(Textarea)`
@@ -24,6 +25,7 @@ const StyledTextArea = styled(Textarea)`
   resize: none;
   z-index: 10;
   margin-bottom: 3rem;
+  background: transparent;
 `;
 
 const InputSet = ({ onChange, title, body }) => {

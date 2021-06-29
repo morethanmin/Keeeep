@@ -54,8 +54,7 @@ const colors = [
   { color: "#e8eaed", tooltip: "회색" },
 ];
 
-const selectedColor = "#FFFFFF";
-export default function ColorPalette({ onColor }) {
+export default function ColorPalette({ onColor, selectedColor }) {
   return (
     <Wrapper>
       <Palette>

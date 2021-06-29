@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:4000";
 
-export const createMemo = ({ title, body }) =>
-  axios.post("/memo", { title, body });
+export const createMemo = ({ title, body, color }) =>
+  axios.post("/memo", { title, body, color });
 
 // 역순으로 최근 작성된 포스트 20개를 불러온다.
 export const getInitialMemo = () =>

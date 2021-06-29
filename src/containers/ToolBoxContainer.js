@@ -12,8 +12,8 @@ export default function ToolBoxContainer({
   children,
 }) {
   const dispatch = useDispatch();
-  const { id } = memo;
-
+  const { id, info } = memo;
+  console.log(info);
   const handlePin = (e) => {
     e.stopPropagation();
 
@@ -46,7 +46,7 @@ export default function ToolBoxContainer({
 
         return;
       case "ui/write":
-        console.log("ui/write", color, id);
+        dispatch(uiActions.changeInput({ name: "color", value: color.color }));
 
         return;
     }
@@ -66,7 +66,6 @@ export default function ToolBoxContainer({
         return;
       case "ui/write":
         console.log("ui/write", id);
-
         return;
     }
   };
@@ -115,6 +114,7 @@ export default function ToolBoxContainer({
       onArchive={handleArchive}
       onDelete={handleDelete}
       visibleOnHover={visibleOnHover}
+      info={info}
     >
       {children}
     </ToolBox>
