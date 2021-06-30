@@ -13,7 +13,6 @@ export default function ToolBoxContainer({
 }) {
   const dispatch = useDispatch();
   const { id, info } = memo;
-  console.log(info);
   const handlePin = (e) => {
     e.stopPropagation();
 
@@ -38,11 +37,15 @@ export default function ToolBoxContainer({
 
     switch (type) {
       case "memo":
-        console.log("memo", color, id);
+        console.log("memo", color, id, memo);
+        dispatch(memoActions.updateMemo({ ...memo, color: color.color }));
 
         return;
       case "ui/memo":
         console.log("ui/memo", color, id);
+        dispatch(
+          uiActions.changeViewerInput({ name: "color", value: color.color })
+        );
 
         return;
       case "ui/write":

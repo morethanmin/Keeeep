@@ -132,6 +132,7 @@ const memoReducer = (state = initialState, action) => {
               ...memo,
               title: action.payload.data.title,
               body: action.payload.data.body,
+              color: action.payload.data.color,
             }
           : memo
       );

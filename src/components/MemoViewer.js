@@ -17,7 +17,8 @@ const Dimmed = styled.div`
 `;
 
 const Viewer = styled.div`
-  background: white;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: ${({ color }) => color};
   position: fixed;
   height: auto;
   z-index: 15;
@@ -43,11 +44,11 @@ const MemoViewer = ({
 }) => {
   // visible 이 아닐경우엔 아무것도 보여주지 않는다
   if (!visible) return null;
-  const { title, body } = memo;
+  const { title, body, color } = memo;
   return (
     <div>
       <Dimmed onClick={onClose} />
-      <Viewer>
+      <Viewer color={color}>
         <InputSet title={title} body={body} onChange={onChange} />
         <ToolBox memo={memo} type="ui/memo">
           <SaveButton onClick={onUpdate} />

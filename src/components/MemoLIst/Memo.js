@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   border-radius: 10px;
   min-height: 104px;
   margin-bottom: 1rem;
-
+  background: ${({ color }) => color};
   /* 텍스트가 길어지면 새 줄 생성; 박스 밖의 것은 숨김 */
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -34,15 +34,14 @@ const Body = styled.div`
 `;
 
 const Memo = ({ memo, onOpen, toolBox: ToolBox }) => {
-  const { title, body } = memo;
-
+  const { title, body, color } = memo;
   const handleClick = (e) => {
     e.cancelBubble = true;
     onOpen(memo);
   };
 
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper color={color} onClick={handleClick}>
       <ToolBox type="memo" memo={memo} visibleOnHover />
 
       {title && <Title>{title}</Title>}
