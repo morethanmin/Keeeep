@@ -4,8 +4,6 @@ import styled from "styled-components";
 import oc from "open-color";
 import { media } from "lib/style-utils";
 
-import ToolBoxContainer from "containers/ToolBoxContainer";
-
 // 화면을 불투명하게 해줍니다.
 const Dimmed = styled.div`
   background: ${oc.gray[3]};

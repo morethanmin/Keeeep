@@ -101,6 +101,8 @@ export default function ToolBoxContainer({
         return;
       case "ui/write":
         //write input 초기화 및 blur 이벤트
+        dispatch(uiActions.resetInput());
+        dispatch(uiActions.blurInput());
         return;
       default:
         return;

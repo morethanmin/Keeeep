@@ -32,6 +32,7 @@ const WriteMemo = () => {
     if (!focused) return;
     if (title !== "" || body !== "") return;
     if (WhiteBoxRef.current.contains(e.target)) return;
+    dispatch(uiActions.resetInput());
     dispatch(uiActions.blurInput());
     document.removeEventListener("mousedown", handleClick);
   };
