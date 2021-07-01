@@ -12,7 +12,7 @@ export default function ToolBoxContainer({
   children,
 }) {
   const dispatch = useDispatch();
-  const { id, info } = memo;
+  const { id } = memo;
   const handlePin = (e) => {
     e.stopPropagation();
 
@@ -119,7 +119,7 @@ export default function ToolBoxContainer({
       onArchive={handleArchive}
       onDelete={handleDelete}
       visibleOnHover={visibleOnHover}
-      info={info}
+      memo={memo}
     >
       {children}
     </ToolBox>

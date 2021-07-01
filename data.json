@@ -3,13 +3,13 @@
     {
       "title": "보라색 메모",
       "body": "보라돌이",
-      "color": "#d7aefb",
+      "color": "#FFFFFF",
       "id": 1
     },
     {
       "title": "녹색메모",
       "body": "녹색메모내용",
-      "color": "#ccff90",
+      "color": "#FFFFFF",
       "id": 2
     },
     {
@@ -31,9 +31,9 @@
       "id": 5
     },
     {
-      "title": "",
+      "title": "제목입니다",
       "body": "메모 작성 테스트메모 작성 테스트메모 작성 테스트메모 작성 테스트메모 작성 테스트메모 작성 테스트메모 작성 테스트메모 작성 테스트",
-      "color": "#FFFFFF",
+      "color": "#fdcfe8",
       "id": 6
     }
   ]

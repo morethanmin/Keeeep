@@ -61,7 +61,7 @@ export default function ToolBox({
   onLabel,
   onArchive,
   onDelete,
-  info = {},
+  memo = {},
 }) {
   return (
     <Wrapper visibleOnHover={visibleOnHover}>
@@ -72,7 +72,7 @@ export default function ToolBox({
       </TopSubWrap>
       <BottomSubWrap>
         <BottomLeft>
-          <ColorPalette selectedColor={info.color} onColor={onColor} />
+          <ColorPalette selectedColor={memo.color} onColor={onColor} />
           <Button onClick={onLabel} tooltip="라벨 선택">
             <MdLabelOutline />
           </Button>
