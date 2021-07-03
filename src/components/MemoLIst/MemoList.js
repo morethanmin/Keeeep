@@ -46,7 +46,7 @@ const MemoList = ({ memos, onOpen, toolBox }) => {
     acc[i % cols] = [...acc[i % cols], child];
     return acc;
   }, new Array(cols).fill([]));
-  console.log(cols);
+  // console.log(cols);
 
   return (
     <Wrapper ref={ref} columns={cols}>

@@ -43,10 +43,10 @@ const WriteMemo = () => {
   };
 
   const handleCreate = () => {
-    dispatch(memoActions.createMemo({ title, body, color }));
-    dispatch(uiActions.resetInput());
     const cursor = memos[0] ? memos[0].id : 0;
-    dispatch(memoActions.getRecentMemo(cursor));
+    dispatch(memoActions.createMemo({ title, body, color, cursor }));
+    dispatch(uiActions.resetInput());
+    // dispatch(memoActions.getRecentMemo(cursor));
   };
 
   return focused ? (

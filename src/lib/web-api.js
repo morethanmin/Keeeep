@@ -1,21 +1,106 @@
-import axios from "axios";
-axios.defaults.baseURL = "http://localhost:4000";
+import { firestore } from "../firebase";
 
-export const createMemo = ({ title, body, color }) =>
-  axios.post("/memo", { title, body, color });
+export const createMemo = ({ title, body, color }) => {
+  return (async () => {
+    try {
+      const memosRef = await firestore
+        .collection("memos")
+        .orderBy("id", "desc")
+        .limit(1)
+        .get();
+      const data = memosRef.docs.map((doc) => doc.data());
 
-// 역순으로 최근 작성된 포스트 20개를 불러온다.
-export const getInitialMemo = () =>
-  axios.get("/memo/?_sort=id&_order=DESC&_limit=20");
+      const id = data.length === 0 ? 0 : data[0].id + 1;
+      const result = await firestore.collection("memos").doc(`${id}`).set({
+        title,
+        body,
+        color,
+        id,
+      });
+      return result;
+    } catch (error) {
+      return error;
+    }
+  })();
+};
 
-// cursor 기준 최근 작성된 메모를 불러온다.
-export const getRecentMemo = (cursor) =>
-  axios.get(`/memo/?id_gte=${cursor + 1}&_sort=id&_order=DESC&`);
+export const getInitialMemo = () => {
+  return (async () => {
+    try {
+      const memosRef = await firestore
+        .collection("memos")
+        .orderBy("id", "desc")
+        .limit(20)
+        .get();
+      const data = memosRef.docs.map((doc) => doc.data());
+      return {
+        data,
+      };
+    } catch (error) {
+      return error;
+    }
+  })();
+};
 
-export const getPreviousMemo = (endCursor) =>
-  axios.get(`/memo/?_sort=id&_order=DESC&_limit=20&id_lte=${endCursor - 1}`); // endCursor 기준 이전 작성된 메모를 불러온다
+export const getRecentMemo = (cursor) => {
+  return (async () => {
+    try {
+      const memosRef = await firestore
+        .collection("memos")
+        .where("id", ">", cursor)
+        .orderBy("id", "desc")
+        .get();
+      const data = memosRef.docs.map((doc) => doc.data());
+      return {
+        data,
+      };
+    } catch (error) {
+      return error;
+    }
+  })();
+};
 
-export const updateMemo = ({ id, title, body, color }) =>
-  axios.put(`/memo/${id}`, { title, body, color }); // 메모를 업데이트한다.
+export const getPreviousMemo = (cursor) => {
+  return (async () => {
+    try {
+      const memosRef = await firestore
+        .collection("memos")
+        .where("id", "<", cursor)
+        .orderBy("id", "desc")
+        .limit(20)
+        .get();
+      const data = memosRef.docs.map((doc) => doc.data());
+      return {
+        data,
+      };
+    } catch (error) {
+      return error;
+    }
+  })();
+};
 
-export const deleteMemo = (id) => axios.delete(`/memo/${id}`); // 메모를 제거한다.
+export const updateMemo = (data) => {
+  return (async () => {
+    try {
+      await firestore.doc(`memos/${data.id}`).update(data);
+      return {
+        data,
+      };
+    } catch (error) {
+      return error;
+    }
+  })();
+};
+
+export const deleteMemo = (id) => {
+  return (async () => {
+    try {
+      await firestore.doc(`memos/${id}`).delete();
+      return {
+        meta: id,
+      };
+    } catch (error) {
+      return error;
+    }
+  })();
+};

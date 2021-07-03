@@ -5,7 +5,13 @@ import {
   createPromiseSagaById,
   reducerUtils,
 } from "../lib/asyncUtils";
-import { takeEvery, takeLatest, takeLeading } from "@redux-saga/core/effects";
+import {
+  call,
+  put,
+  takeEvery,
+  takeLatest,
+  takeLeading,
+} from "@redux-saga/core/effects";
 
 // action type
 
@@ -55,7 +61,15 @@ export const deleteMemo = (id) => ({
   meta: id,
 });
 
-const createMemoSaga = createPromiseSaga(CREATE_MEMO, webAPI.createMemo);
+const createMemoSaga = function* (action) {
+  try {
+    const payload = yield call(webAPI.createMemo, action.payload);
+    yield put({ type: GET_RECENT_MEMO, payload: action.payload.cursor });
+  } catch (e) {
+    yield put({ type: "memo/CREATE_MEMO_ERROR", error: true, payload: e });
+  }
+};
+
 const getInitialMemoSaga = createPromiseSaga(
   GET_INITIAL_MEMO,
   webAPI.getInitialMemo
