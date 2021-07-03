@@ -9,6 +9,7 @@ import {
 import { CgMenuGridO } from "react-icons/cg";
 import { MdMenu } from "react-icons/md";
 import Button from "components/shared/Button";
+import { media } from "lib/style-utils";
 
 const Wrapper = styled.div`
   /* 레이아웃 */
@@ -41,6 +42,10 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
   }
+
+  ${media.tablet`
+    padding: 0 0.5rem;
+  `}
 `;
 
 const LeftBox = styled.div`
@@ -74,6 +79,10 @@ const MiddleBox = styled.div`
   > svg {
     margin: 0px 10px;
   }
+
+  ${media.tablet`
+    display: none;
+  `}
 `;
 
 const SettingBox = styled.div`
@@ -119,6 +128,10 @@ const Search = styled.form`
     }
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
+
+  ${media.tablet`
+    display: none;
+  `}
 `;
 
 const RightBox = styled.div`

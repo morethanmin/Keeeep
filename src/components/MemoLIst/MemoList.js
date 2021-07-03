@@ -1,10 +1,15 @@
 import Memo from "./Memo";
 import { useEffect, useRef, useState } from "react";
+import { media } from "lib/style-utils";
 
 const { default: styled } = require("styled-components");
 
 const Wrapper = styled.div`
   padding: 0 5rem;
+
+  ${media.tablet`
+    padding: 0 0.5rem;
+  `}
 
   margin-top: 3rem;
   display: grid;
