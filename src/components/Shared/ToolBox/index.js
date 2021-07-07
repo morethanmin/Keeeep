@@ -1,12 +1,13 @@
-import React from "react";
-import Button from "../Button";
-import { BiPin, BiPalette } from "react-icons/bi";
-import { MdLabelOutline } from "react-icons/md";
-import { BiArchiveIn } from "react-icons/bi";
-import { FaRegTrashAlt } from "react-icons/fa";
-import ColorPalette from "./ColorPalette";
+import React from 'react'
+import Button from '../Button'
+import { BiPin, BiPalette } from 'react-icons/bi'
+import { MdLabelOutline } from 'react-icons/md'
+import { BiArchiveIn } from 'react-icons/bi'
+import { FaRegTrashAlt } from 'react-icons/fa'
+import ColorPalette from './ColorPalette'
+import Pinned from './Pinned'
 
-const { default: styled, css } = require("styled-components");
+const { default: styled, css } = require('styled-components')
 
 const Wrapper = styled.div`
   position: absolute;
@@ -39,36 +40,25 @@ const Wrapper = styled.div`
     }
     color: #5f6368;
   }
-`;
+`
 const TopSubWrap = styled.div`
   flex-direction: row-reverse;
-`;
+`
 const BottomSubWrap = styled.div`
   justify-content: space-between;
-`;
+`
 const BottomLeft = styled.div`
   display: flex;
-`;
+`
 const BottomRight = styled.div`
   display: flex;
-`;
+`
 
-export default function ToolBox({
-  visibleOnHover,
-  children,
-  onPin,
-  onColor,
-  onLabel,
-  onArchive,
-  onDelete,
-  memo = {},
-}) {
+export default function ToolBox({ visibleOnHover, children, onPin, onColor, onLabel, onArchive, onDelete, memo = {} }) {
   return (
     <Wrapper visibleOnHover={visibleOnHover}>
       <TopSubWrap>
-        <Button onClick={onPin} tooltip="메모 고정">
-          <BiPin />
-        </Button>
+        <Pinned onClick={onPin} pinned={memo.pinned} />
       </TopSubWrap>
       <BottomSubWrap>
         <BottomLeft>
@@ -86,5 +76,5 @@ export default function ToolBox({
         <BottomRight>{children}</BottomRight>
       </BottomSubWrap>
     </Wrapper>
-  );
+  )
 }
