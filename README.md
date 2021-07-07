@@ -17,7 +17,7 @@
 
 ## Features
 
-- 자신만의 노트 생성 및 삭제 (color, archive, label, etc)
+- 자신만의 노트 (color, archive, label, etc)
 - Grid를 사용해 masonry UI 구현
 - 반응형
 
