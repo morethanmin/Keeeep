@@ -6,7 +6,7 @@ import WriteMemo from 'containers/WriteMemo'
 import MemoListContainer from 'containers/MemoListContainer'
 import MemoViewerContainer from 'containers/MemoViewerContainer'
 
-export default function Index() {
+export default function Trash() {
   const dispatch = useDispatch()
   const { data: memos, loading } = useSelector((state) => state.memo)
   var cursor = 0
@@ -39,9 +39,7 @@ export default function Index() {
   }
   return (
     <>
-      <WriteMemo />
-      {loading ? null : <MemoListContainer title="고정됨" filter={{ pinned: true, archived: false }} />}
-      {loading ? null : <MemoListContainer title="일반" filter={{ pinned: false, archived: false }} />}
+      {loading ? null : <MemoListContainer title="" filter={{ isDeleted: true }} />}
       <MemoViewerContainer />
     </>
   )

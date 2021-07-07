@@ -64,15 +64,15 @@ export default function ToolBoxContainer({ memo = {}, type, visibleOnHover = fal
 
     switch (type) {
       case 'memo':
-        console.log('memo', id)
+        dispatch(memoActions.updateMemo({ ...memo, archived: !memo.archived }))
 
         return
       case 'ui/memo':
-        console.log('ui/memo', id)
+        dispatch(uiActions.changeViewerInput({ name: 'archived', value: !memo.archived }))
 
         return
       case 'ui/write':
-        console.log('ui/write', id)
+        dispatch(uiActions.changeInput({ name: 'archived', value: !memo.archived }))
 
         return
     }
