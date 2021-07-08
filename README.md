@@ -13,7 +13,7 @@
 
 ## Preview
 
-![image](https://user-images.githubusercontent.com/72514247/124101507-63da4600-da9a-11eb-93b9-ab080361771f.png)
+![image](https://user-images.githubusercontent.com/72514247/124856568-b6a98580-dfe5-11eb-8111-2c1cc03fccf4.png)
 
 ## Features
 
