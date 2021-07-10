@@ -2,7 +2,7 @@ import { getInitialMemo } from 'modules/memo'
 import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as memoActions from 'modules/memo'
-import WriteMemo from 'containers/WriteMemo'
+import WriteMemo from 'containers/WriteMemoContainer'
 import MemoListContainer from 'containers/MemoListContainer'
 import MemoViewerContainer from 'containers/MemoViewerContainer'
 

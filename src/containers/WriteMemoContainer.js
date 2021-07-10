@@ -27,7 +27,6 @@ const WriteMemo = () => {
     }
   }
 
-  //title, body가 갱신이 안되서 내용이 있을 땐 blur액션이 일어나지 않게\
   const handleClick = (e) => {
     if (!focused) return
     if (title !== '' || body !== '') return
@@ -46,7 +45,6 @@ const WriteMemo = () => {
     const cursor = memos[0] ? memos[0].id : 0
     dispatch(memoActions.createMemo({ info, cursor }))
     dispatch(uiActions.resetInput())
-    // dispatch(memoActions.getRecentMemo(cursor));
   }
 
   return focused ? (
