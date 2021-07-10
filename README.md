@@ -13,11 +13,11 @@
 
 ## Preview
 
-![image](https://user-images.githubusercontent.com/72514247/124101507-63da4600-da9a-11eb-93b9-ab080361771f.png)
+![image](https://user-images.githubusercontent.com/72514247/124856568-b6a98580-dfe5-11eb-8111-2c1cc03fccf4.png)
 
 ## Features
 
-- 자신만의 노트 생성 및 삭제 (color, archive, label, etc)
+- 자신만의 노트 (color, archive, label, etc)
 - Grid를 사용해 masonry UI 구현
 - 반응형
 
