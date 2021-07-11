@@ -1,15 +1,10 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import {
-  IoIosSearch,
-  IoIosPaper,
-  IoMdRefresh,
-  IoMdSettings,
-} from "react-icons/io";
-import { CgMenuGridO } from "react-icons/cg";
-import { MdMenu } from "react-icons/md";
-import Button from "components/shared/Button";
-import { media } from "lib/style-utils";
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { IoIosSearch, IoIosPaper, IoMdRefresh, IoMdSettings } from 'react-icons/io'
+import { CgMenuGridO } from 'react-icons/cg'
+import { MdMenu } from 'react-icons/md'
+import Button from 'components/shared/Button'
+import { media } from 'lib/style-utils'
 
 const Wrapper = styled.div`
   /* 레이아웃 */
@@ -37,7 +32,7 @@ const Wrapper = styled.div`
   }
 
   * {
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
 
     display: flex;
     align-items: center;
@@ -46,20 +41,20 @@ const Wrapper = styled.div`
   ${media.tablet`
     padding: 0 0.5rem;
   `}
-`;
+`
 
 const LeftBox = styled.div`
   > * {
     margin-right: 15px;
   }
   padding-right: 60px;
-`;
+`
 
 const Menu = styled.div`
   svg {
     font-size: 1.6rem;
   }
-`;
+`
 
 const Logo = styled.div`
   cursor: pointer;
@@ -68,7 +63,7 @@ const Logo = styled.div`
     font-size: 2.2rem;
     margin-right: 10px;
   }
-`;
+`
 
 const MiddleBox = styled.div`
   width: 100%;
@@ -83,13 +78,13 @@ const MiddleBox = styled.div`
   ${media.tablet`
     display: none;
   `}
-`;
+`
 
 const SettingBox = styled.div`
   > svg {
     margin: 0px 10px;
   }
-`;
+`
 
 const Search = styled.form`
   display: flex;
@@ -132,11 +127,11 @@ const Search = styled.form`
   ${media.tablet`
     display: none;
   `}
-`;
+`
 
 const RightBox = styled.div`
   padding-left: 30px;
-`;
+`
 
 const Profile = styled.div`
   background: #5f6368;
@@ -149,9 +144,9 @@ const Profile = styled.div`
   display: flex;
   justify-content: center;
   margin-left: 5px;
-`;
+`
 
-export default function Header({ handleMenuClick }) {
+export default function Header({ handleRefresh, handleMenuClick }) {
   return (
     <Wrapper>
       <LeftBox>
@@ -173,7 +168,7 @@ export default function Header({ handleMenuClick }) {
           <input type="text" placeholder="검색" />
         </Search>
         <SettingBox>
-          <Button tooltip="새로고침">
+          <Button onClick={handleRefresh} tooltip="새로고침">
             <IoMdRefresh />
           </Button>
           <Button tooltip="설정">
@@ -188,5 +183,5 @@ export default function Header({ handleMenuClick }) {
         <Profile>상민</Profile>
       </RightBox>
     </Wrapper>
-  );
+  )
 }

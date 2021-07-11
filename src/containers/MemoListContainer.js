@@ -47,7 +47,7 @@ export default function MemoListContainer({ title, filter }) {
         cols={cols}
         toolBox={ToolBoxContainer}
         onOpen={(payload) => {
-          dispatch(uiActions.openViewer(payload))
+          dispatch(uiActions.openMemo(payload))
         }}
       />
     </div>

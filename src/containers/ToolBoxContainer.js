@@ -17,7 +17,7 @@ export default function ToolBoxContainer({ memo = {}, type, visibleOnHover = fal
         dispatch(memoActions.updateMemo({ ...memo, pinned: !memo.pinned }))
         return
       case 'ui/memo':
-        dispatch(uiActions.changeViewerInput({ name: 'pinned', value: !memo.pinned }))
+        dispatch(uiActions.changeMemoInput({ name: 'pinned', value: !memo.pinned }))
         return
       case 'ui/write':
         dispatch(uiActions.changeInput({ name: 'pinned', value: !memo.pinned }))
@@ -33,7 +33,7 @@ export default function ToolBoxContainer({ memo = {}, type, visibleOnHover = fal
         dispatch(memoActions.updateMemo({ ...memo, color: color.color }))
         return
       case 'ui/memo':
-        dispatch(uiActions.changeViewerInput({ name: 'color', value: color.color }))
+        dispatch(uiActions.changeMemoInput({ name: 'color', value: color.color }))
         return
       case 'ui/write':
         dispatch(uiActions.changeInput({ name: 'color', value: color.color }))
@@ -68,7 +68,7 @@ export default function ToolBoxContainer({ memo = {}, type, visibleOnHover = fal
 
         return
       case 'ui/memo':
-        dispatch(uiActions.changeViewerInput({ name: 'archived', value: !memo.archived }))
+        dispatch(uiActions.changeMemoInput({ name: 'archived', value: !memo.archived }))
 
         return
       case 'ui/write':
@@ -86,7 +86,7 @@ export default function ToolBoxContainer({ memo = {}, type, visibleOnHover = fal
         return
       case 'ui/memo':
         dispatch(memoActions.deleteMemo(id))
-        dispatch(uiActions.closeViewer())
+        dispatch(uiActions.closeMemo())
         return
       case 'ui/write':
         //write input 초기화 및 blur 이벤트

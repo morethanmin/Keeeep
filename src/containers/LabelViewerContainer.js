@@ -6,14 +6,22 @@ import * as uiActions from 'modules/ui'
 export default function LabelViewerContainer() {
   const label = useSelector((state) => state.ui.label)
   const dispatch = useDispatch()
-  const { open, info } = label
+  const { open, input } = label
 
+  const handleClose = (e) => {
+    dispatch(uiActions.resetLabelInput())
+    dispatch(uiActions.closeLabel())
+  }
+  const handleChange = (e) => {
+    const { value, name } = e.target
+    dispatch(uiActions.changeLabelInput({ name, value }))
+  }
   return (
     <Labelviewer
+      input={input}
+      onChange={handleChange}
       visible={open}
-      onClose={() => {
-        dispatch(uiActions.closeLabel())
-      }}
+      onClose={handleClose}
       // onDelete={handleDelete}
     ></Labelviewer>
   )

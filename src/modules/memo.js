@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import * as webAPI from 'lib/web-api'
+import * as memoApi from 'lib/memoApi'
 import { createPromiseSaga, createPromiseSagaById, reducerUtils } from '../lib/asyncUtils'
 import { call, put, takeEvery, takeLatest, takeLeading } from '@redux-saga/core/effects'
 
@@ -52,21 +52,20 @@ export const deleteMemo = (id) => ({
 })
 
 const createMemoSaga = function* (action) {
-  console.log(action.payload)
   try {
-    yield call(webAPI.createMemo, action.payload)
+    yield call(memoApi.createMemo, action.payload)
     yield put({ type: GET_RECENT_MEMO, payload: action.payload.cursor })
   } catch (e) {
     yield put({ type: 'memo/CREATE_MEMO_ERROR', error: true, payload: e })
   }
 }
 
-const getInitialMemoSaga = createPromiseSaga(GET_INITIAL_MEMO, webAPI.getInitialMemo)
-const getRecentMemoSaga = createPromiseSaga(GET_RECENT_MEMO, webAPI.getRecentMemo)
-const getPreviousMemoSaga = createPromiseSaga(GET_PREVIOUS_MEMO, webAPI.getPreviousMemo)
+const getInitialMemoSaga = createPromiseSaga(GET_INITIAL_MEMO, memoApi.getInitialMemo)
+const getRecentMemoSaga = createPromiseSaga(GET_RECENT_MEMO, memoApi.getRecentMemo)
+const getPreviousMemoSaga = createPromiseSaga(GET_PREVIOUS_MEMO, memoApi.getPreviousMemo)
 
-const updateMemoSaga = createPromiseSaga(UPDATE_MEMO, webAPI.updateMemo)
-const deleteMemoSaga = createPromiseSagaById(DELETE_MEMO, webAPI.deleteMemo)
+const updateMemoSaga = createPromiseSaga(UPDATE_MEMO, memoApi.updateMemo)
+const deleteMemoSaga = createPromiseSagaById(DELETE_MEMO, memoApi.deleteMemo)
 
 // 사가들을 합치기
 export function* memoSaga() {

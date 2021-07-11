@@ -71,7 +71,7 @@ const ViewerBottom = styled.div`
   flex-direction: row-reverse;
 `
 
-const LabelViewer = ({ visible, onClose }) => {
+const LabelViewer = ({ visible, onChange, onClose, input }) => {
   const inputRef = useRef()
   const [inputFocus, setInputFocus] = useState(false)
   const handlePlus = () => {
@@ -86,10 +86,15 @@ const LabelViewer = ({ visible, onClose }) => {
     setInputFocus(false)
     inputRef.current.blur()
   }
+
+  const handleClose = () => {
+    setInputFocus(false)
+    onClose()
+  }
   if (!visible) return null
   return (
     <div>
-      <Dimmed onClick={onClose} />
+      <Dimmed onClick={handleClose} />
       <Viewer>
         <ViewerTop>
           <div>라벨 수정</div>
@@ -105,6 +110,9 @@ const LabelViewer = ({ visible, onClose }) => {
             )}
 
             <Input
+              value={input}
+              onChange={onChange}
+              name="input"
               onFocus={() => {
                 setInputFocus(true)
               }}
@@ -121,7 +129,7 @@ const LabelViewer = ({ visible, onClose }) => {
         </ViewerTop>
 
         <ViewerBottom>
-          <SaveButton onClick={onClose} />
+          <SaveButton onClick={handleClose} />
         </ViewerBottom>
       </Viewer>
     </div>

@@ -38,7 +38,6 @@ const MemoList = ({ title, memos, onOpen, toolBox, cols }) => {
       return acc
     }, new Array(cols).fill([]))
   }
-  console.log(memos)
   if (memos.length === 0) return <Wrapper></Wrapper>
   return (
     <Wrapper>
