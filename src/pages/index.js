@@ -1,7 +1,7 @@
-import { getInitialMemo } from 'modules/memo'
+import * as memoActions from 'modules/memo'
+import * as labelActions from 'modules/label'
 import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import * as memoActions from 'modules/memo'
 import WriteMemo from 'containers/WriteMemoContainer'
 import MemoListContainer from 'containers/MemoListContainer'
 import MemoViewerContainer from 'containers/MemoViewerContainer'
@@ -12,7 +12,8 @@ export default function Index() {
   var cursor = 0
 
   useEffect(() => {
-    dispatch(getInitialMemo())
+    dispatch(memoActions.getInitialMemo())
+    dispatch(labelActions.getInitialLabel())
   }, [])
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)

@@ -6,6 +6,7 @@ import oc from 'open-color'
 import { BsPlus, BsCheck, BsX } from 'react-icons/bs'
 import { useState } from 'react'
 import { useRef } from 'react'
+import Label from './Label'
 
 // 화면을 불투명하게 해줍니다.
 const Dimmed = styled.div`
@@ -44,20 +45,21 @@ const Input = styled.input`
   padding: 5px;
   width: 100%;
   &:focus {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #c2c2c2;
   }
   margin: 0px 5px;
 `
 
 const LabelListWrapper = styled.div`
-  display: flex;
-  align-items: center;
+  > * {
+    margin-bottom: 15px;
+  }
 `
 
 const ViewerTop = styled.div`
   padding: 1rem;
   > * {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   border-top: 1px solid #dadce0;
 `
@@ -71,7 +73,7 @@ const ViewerBottom = styled.div`
   flex-direction: row-reverse;
 `
 
-const LabelViewer = ({ visible, onChange, onClose, input }) => {
+const LabelViewer = ({ visible, labels, onSubmit, onChange, onClose, input }) => {
   const inputRef = useRef()
   const [inputFocus, setInputFocus] = useState(false)
   const handlePlus = () => {
@@ -82,15 +84,16 @@ const LabelViewer = ({ visible, onChange, onClose, input }) => {
     setInputFocus(false)
   }
   const handleLabelSubmit = () => {
-    console.log('submitted')
     setInputFocus(false)
     inputRef.current.blur()
+    onSubmit()
   }
 
   const handleClose = () => {
     setInputFocus(false)
     onClose()
   }
+  console.log(labels)
   if (!visible) return null
   return (
     <div>
@@ -125,7 +128,11 @@ const LabelViewer = ({ visible, onChange, onClose, input }) => {
               </Button>
             ) : null}
           </InputWrapper>
-          <LabelListWrapper></LabelListWrapper>
+          <LabelListWrapper>
+            {labels.map((label) => (
+              <Label value={label.text} key={label.id} />
+            ))}
+          </LabelListWrapper>
         </ViewerTop>
 
         <ViewerBottom>
