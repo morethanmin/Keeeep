@@ -5,6 +5,7 @@ import { MdLabel } from 'react-icons/md'
 import { HiTrash } from 'react-icons/hi'
 import { BiPencil } from 'react-icons/bi'
 import { BsCheck } from 'react-icons/bs'
+import { useEffect } from 'react'
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,48 +26,57 @@ const Input = styled.input`
 
 export default function Label({ value }) {
   const inputRef = useRef()
+  const wrapperRef = useRef()
   const [inputFocus, setInputFocus] = useState(false)
+  const [labelHover, setLabelHover] = useState(false)
 
-  const handlePlus = () => {
-    inputRef.current.focus()
-    setInputFocus(true)
-  }
+  useEffect(() => {
+    window.addEventListener('mousedown', handleClick)
+    return () => {
+      window.removeEventListener('mousedown', handleClick)
+    }
+  }, [value])
 
-  const handleSubmit = () => {
+  const handleClick = (e) => {
+    if (wrapperRef.current.contains(e.target)) return
     setInputFocus(false)
-    inputRef.current.blur()
   }
-
-  const handleDelete = () => {}
+  const handleSubmit = () => {
+    console.log('updateEvent')
+    setInputFocus(false)
+  }
+  const handleDelete = () => {
+    console.log('deleteEvent')
+    setInputFocus(false)
+  }
   return (
-    <Wrapper>
-      {inputFocus ? (
-        <Button onClick={handleDelete} tooltip="라벨 삭제" size="3" fontSize="1.2">
-          <HiTrash />
-        </Button>
-      ) : (
-        <Button size="3" fontSize="1.2">
-          <MdLabel />
-        </Button>
-      )}
+    <Wrapper
+      ref={wrapperRef}
+      onMouseOver={() => {
+        setLabelHover(true)
+      }}
+      onMouseLeave={() => {
+        setLabelHover(false)
+      }}
+    >
+      <Button onClick={handleDelete} tooltip="라벨 삭제" size="3" fontSize="1.2">
+        {inputFocus || labelHover ? <HiTrash /> : <MdLabel />}
+      </Button>
+
       <Input
-        value={value}
-        name="input"
         onFocus={() => {
           setInputFocus(true)
         }}
+        onBlur={() => {}}
+        value={value}
+        name="input"
         ref={inputRef}
         placeholder="라벨 이름 입력"
       />
-      {inputFocus ? (
-        <Button onClick={handleSubmit} tooltip="라벨 이름 바꾸기" size="3" fontSize="1.2">
-          <BsCheck />
-        </Button>
-      ) : (
-        <Button onClick={handlePlus} tooltip="라벨 이름 바꾸기" size="3" fontSize="1.2">
-          <BiPencil />
-        </Button>
-      )}
+
+      <Button onClick={handleSubmit} tooltip="라벨 이름 바꾸기" size="3" fontSize="1.2">
+        {inputFocus ? <BsCheck /> : <BiPencil />}
+      </Button>
     </Wrapper>
   )
 }
