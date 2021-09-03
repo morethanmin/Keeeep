@@ -73,7 +73,14 @@ const ViewerBottom = styled.div`
   flex-direction: row-reverse;
 `
 
-const LabelViewer = ({ visible, labels, onSubmit, onChange, onClose, input }) => {
+const LabelViewer = ({
+  visible,
+  labels,
+  onSubmit,
+  onChange,
+  onClose,
+  input,
+}) => {
   const inputRef = useRef()
   const [inputFocus, setInputFocus] = useState(false)
   const handlePlus = () => {
@@ -107,7 +114,12 @@ const LabelViewer = ({ visible, labels, onSubmit, onChange, onClose, input }) =>
                 <BsX />
               </Button>
             ) : (
-              <Button onClick={handlePlus} tooltip="라벨 만들기" size="3" fontSize="1.2">
+              <Button
+                onClick={handlePlus}
+                tooltip="라벨 만들기"
+                size="3"
+                fontSize="1.2"
+              >
                 <BsPlus />
               </Button>
             )}
@@ -123,7 +135,12 @@ const LabelViewer = ({ visible, labels, onSubmit, onChange, onClose, input }) =>
               placeholder="새 라벨 만들기"
             />
             {inputFocus ? (
-              <Button onClick={handleLabelSubmit} tooltip="라벨 만들기" size="3" fontSize="1.2">
+              <Button
+                onClick={handleLabelSubmit}
+                tooltip="라벨 만들기"
+                size="3"
+                fontSize="1.2"
+              >
                 <BsCheck />
               </Button>
             ) : null}
