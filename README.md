@@ -2,10 +2,7 @@
 
 > google keep은 구글에서 만든 메모 애플리케이션입니다.
 > 
-> React와 Redux, 그리고 Redux-saga를 사용해 google keep 서비스를 클론 코딩해보았습니다. 
-
-반복되는 코드들은 리팩토링을 통해 모듈화 하고자 하였고, 모든 action(ui, async)들은 redux와 redux-saga를 통해 처리했습니다.
-
+> React와 Redux, 그리고 Redux-saga를 사용했습니다.
 
 ## Live demo
 
