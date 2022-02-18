@@ -2,7 +2,7 @@
 
 > google keep은 구글에서 만든 메모 애플리케이션입니다.
 > 
-> React와 Redux, 그리고 Redux-saga를 사용했습니다.
+> React와 Redux, 그리고 Redux-saga를 학습하기 위해 만든 토이 프로젝트
 
 ## Live demo
 
